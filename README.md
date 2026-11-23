@@ -117,6 +117,14 @@ $P scripts/eval_predictions.py --gold <对应 JSONL> --pred runs/jetson/<bench>/
 $P -m qwen_vlm.app.app --server http://127.0.0.1:8080 --pixels 512 --camera 0
 ```
 
+实时摄像头 + 空格触发推理的独立窗口程序（同一 llama-server；本机也可用 `--backend transformers` 直接加载模型）：
+
+```bash
+$P scripts/live_check.py --backend llamacpp --server http://127.0.0.1:8080 --pixels 512
+```
+
+用法与排错见 `docs/live_check.md`。
+
 ## 版本固定
 
 - 基础模型：`Qwen/Qwen3-VL-2B-Instruct@89644892e4d85e24eaac8bacfd4f463576704203`，逐文件 SHA256 见 `artifacts/base/manifest.json`

@@ -25,3 +25,6 @@ data/aug/
 data/robust/
 runs/robust/.work/
 runs/robust/.lock
+
+# live_check.py 的运行时截图和自检输出，不进库。
+runs/live_demo/

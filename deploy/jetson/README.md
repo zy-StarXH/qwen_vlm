@@ -69,6 +69,8 @@ PYTHONPATH=src .venv/bin/python scripts/predict_llamacpp.py \
 
 `04_app.sh` 同时拉起 llama-server 和网页。浏览器打开 `http://<板子IP>:7860`。模型已经在本机，起来之后可以断网。摄像头设备号用 `CAMERA=0`（即 `/dev/video0`）。没有摄像头时，网页里选「读取保存图片」。
 
+如果要在板子的本地显示器上演示“实时画面 + 空格触发推理”，用 `scripts/live_check.py`。它连接同一个 llama-server，用法见 `docs/live_check.md`。预打包的 bundle 生成早于该脚本，把 `scripts/live_check.py` 拷进 bundle 的 `scripts/` 即可运行。
+
 ## 3. 传回服务器的文件
 
 请把这些拷回服务器的 `runs/jetson/`，不要改名：
