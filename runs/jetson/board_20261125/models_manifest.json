@@ -1,0 +1,26 @@
+{
+  "source": "Qwen/Qwen3-VL-2B-Instruct-GGUF on ModelScope (official)",
+  "source_revision": "1d49f1a70c0c1ea52f82fd46ea44b388183aa16c",
+  "f16_sha256_expected": "27b80f2e258f8372c9ee3a9b2293bd747cc08b18ed99709b57288cf457c42595",
+  "mmproj_sha256_expected": "c3d5afbef5287953acd57b4043d2269456e5761a4eaccb3b71b062996970aea5",
+  "quantized_on_board_with": "llama.cpp b12425 llama-quantize",
+  "files": {
+    "base-f16.gguf": {
+      "bytes": 3447350304,
+      "sha256": "27b80f2e258f8372c9ee3a9b2293bd747cc08b18ed99709b57288cf457c42595"
+    },
+    "base-q4_k_m.gguf": {
+      "bytes": 1107409952,
+      "sha256": "90aafe3de4ccd24a1ea1d1a852d2d1fa4b0d9308fdd729ef60ad0ec48e4c107e"
+    },
+    "base-q8_0.gguf": {
+      "bytes": 1834427424,
+      "sha256": "8c0596e57290e1c00e721a882ba6b172a5eb9696940298ffd25d90c753a3b288"
+    },
+    "mmproj-base-f16.gguf": {
+      "bytes": 819394848,
+      "sha256": "c3d5afbef5287953acd57b4043d2269456e5761a4eaccb3b71b062996970aea5"
+    }
+  },
+  "note": "F16 and mmproj match the official ModelScope/LFS SHA256. Q8_0/Q4_K_M were regenerated on the Jetson from the verified F16 file; sizes equal the official Q8_0/Q4_K_M files."
+}

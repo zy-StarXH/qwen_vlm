@@ -1,0 +1,195 @@
+LOG_FILE=/home/jetson/qwen_vlm/release/jetson_bundle_base/logs/00_probe_20261125_155046.txt
+开始时间 2026-11-25T15:50:46+08:00
+
+===== 型号 =====
+NVIDIA Jetson Orin Nano Engineering Reference Developer Kit Super
+OK
+
+===== L4T / JetPack =====
+# R36 (release), REVISION: 4.3, GCID: 38968081, BOARD: generic, EABI: aarch64, DATE: Wed Jan  8 01:49:37 UTC 2025
+# KERNEL_VARIANT: oot
+TARGET_USERSPACE_LIB_DIR=nvidia
+TARGET_USERSPACE_LIB_DIR_PATH=usr/lib/aarch64-linux-gnu/nvidia
+
+===== nvpmodel -q =====
+NV Power Mode: MAXN_SUPER
+2
+OK
+
+===== CUDA/nvcc =====
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2024 NVIDIA Corporation
+Built on Tue_Oct_29_23:53:06_PDT_2024
+Cuda compilation tools, release 12.6, V12.6.85
+Build cuda_12.6.r12.6/compiler.35059454_0
+OK
+
+===== CUDA 版本文件 =====
+{
+   "cuda" : {
+      "name" : "CUDA SDK",
+      "version" : "12.6.11"
+   },
+   "cuda_cccl" : {
+      "name" : "CUDA C++ Core Compute Libraries",
+      "version" : "12.6.37"
+   },
+   "cuda_compat" : {
+      "name" : "CUDA Specific Libraries",
+      "version" : "12.6.36890662"
+   },
+   "cuda_cudart" : {
+      "name" : "CUDA Runtime (cudart)",
+      "version" : "12.6.68"
+   },
+   "cuda_cuobjdump" : {
+      "name" : "cuobjdump",
+      "version" : "12.6.68"
+   },
+   "cuda_cupti" : {
+      "name" : "CUPTI",
+      "version" : "12.6.68"
+   },
+   "cuda_cuxxfilt" : {
+      "name" : "CUDA cu++ filt",
+      "version" : "12.6.68"
+   },
+   "cuda_gdb" : {
+      "name" : "CUDA GDB",
+      "version" : "12.6.68"
+   },
+   "cuda_nvcc" : {
+      "name" : "CUDA NVCC",
+      "version" : "12.6.68"
+   },
+   "cuda_nvdisasm" : {
+      "name" : "CUDA nvdisasm",
+      "version" : "12.6.68"
+   },
+   "cuda_nvml_dev" : {
+      "name" : "CUDA NVML Headers",
+      "version" : "12.6.68"
+   },
+   "cuda_nvprune" : {
+      "name" : "CUDA nvprune",
+      "version" : "12.6.68"
+   },
+   "cuda_nvrtc" : {
+      "name" : "CUDA NVRTC",
+      "version" : "12.6.68"
+   },
+   "cuda_nvtx" : {
+      "name" : "CUDA NVTX",
+      "version" : "12.6.68"
+   },
+   "cuda_sanitizer_api" : {
+      "name" : "CUDA Compute Sanitizer API",
+      "version" : "12.6.68"
+   },
+   "libcublas" : {
+      "name" : "CUDA cuBLAS",
+      "version" : "12.6.1.4"
+   },
+   "libcudla" : {
+      "name" : "CUDA cuDLA",
+      "version" : "12.6.68"
+   },
+   "libcufft" : {
+      "name" : "CUDA cuFFT",
+      "version" : "11.2.6.59"
+   },
+   "libcufile" : {
+      "name" : "GPUDirect Storage (cufile)",
+      "version" : "1.11.1.6"
+   },
+   "libcurand" : {
+      "name" : "CUDA cuRAND",
+      "version" : "10.3.7.68"
+   },
+   "libcusolver" : {
+      "name" : "CUDA cuSOLVER",
+      "version" : "11.6.4.69"
+   },
+   "libcusparse" : {
+      "name" : "CUDA cuSPARSE",
+      "version" : "12.5.3.3"
+   },
+   "libnpp" : {
+      "name" : "CUDA NPP",
+      "version" : "12.3.1.54"
+   },
+   "libnvfatbin" : {
+      "name" : "Fatbin interaction library",
+      "version" : "12.6.68"
+   },
+   "libnvjitlink" : {
+      "name" : "JIT Linker Library",
+      "version" : "12.6.68"
+   },
+   "libnvjpeg" : {
+      "name" : "CUDA nvJPEG",
+      "version" : "12.3.3.54"
+   },
+   "nsight_compute" : {
+      "name" : "Nsight Compute",
+      "version" : "2024.3.1.2"
+   },
+   "nvidia_fs" : {
+      "name" : "NVIDIA file-system",
+      "version" : "2.22.3"
+   }
+}
+CUDA_HOME=未设置
+/usr/local/cuda
+/usr/local/cuda-12
+/usr/local/cuda-12.6
+
+===== 内存和 swap =====
+               total        used        free      shared  buff/cache   available
+内存：      7.4Gi       3.1Gi        97Mi       119Mi       4.2Gi       3.9Gi
+交换：       11Gi       455Mi        11Gi
+NAME          TYPE      SIZE  USED PRIO
+/var/8GB.swap file        8G    0B   -2
+/dev/zram0    partition 635M 76.8M    5
+/dev/zram1    partition 635M 76.1M    5
+/dev/zram2    partition 635M 75.6M    5
+/dev/zram3    partition 635M 75.6M    5
+/dev/zram4    partition 635M 75.1M    5
+/dev/zram5    partition 635M 75.7M    5
+MemTotal:        7802704 kB
+MemAvailable:    4133752 kB
+SwapTotal:      12289948 kB
+SwapFree:       11824028 kB
+
+===== 磁盘 =====
+文件系统         大小  已用  可用 已用% 挂载点
+/dev/nvme0n1p1   177G  142G   28G   84% /
+tmpfs            3.8G  172K  3.8G    1% /dev/shm
+tmpfs            1.5G  153M  1.4G   10% /run
+tmpfs            5.0M  4.0K  5.0M    1% /run/lock
+/dev/nvme0n1p10   63M  110K   63M    1% /boot/efi
+tmpfs            762M  1.7M  761M    1% /run/user/1000
+
+===== Python / cmake / gcc =====
+Python 3.10.12
+cmake version 3.22.1
+gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0
+g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0
+
+===== 摄像头 =====
+MISSING /dev/video*
+Cannot open device /dev/video0, exiting.
+NVIDIA Tegra Video Input Device (platform:tegra-camrtc-ca):
+	/dev/media0
+
+v4l2-ctl 执行失败
+
+===== 用户组 =====
+uid=1000(jetson) gid=1000(jetson) 组=1000(jetson),4(adm),20(dialout),24(cdrom),27(sudo),29(audio),30(dip),44(video),46(plugdev),104(render),116(i2c),120(lpadmin),135(gdm),136(sambashare),993(ollama),994(docker),996(weston-launch),999(gpio),1001(jtop)
+jetson adm dialout cdrom sudo audio dip video plugdev render i2c lpadmin gdm sambashare ollama docker weston-launch gpio jtop
+
+===== 网络 =====
+OK 可以访问 https://pypi.org（01 安装依赖需要网络）
+
+探测只记录现状，不修改系统。
+RESULT: PASS

@@ -1,0 +1,1212 @@
+{
+  "device": "Jetson Orin Nano 8GB (Engineering Reference Developer Kit Super)",
+  "l4t": "R36.4.3",
+  "cuda": "12.6.11",
+  "power_mode": "MAXN_SUPER",
+  "llamacpp": "b12425 / 18b74fa41dcac1f55ae1371fe58153f7225941f6",
+  "models": "Qwen3-VL-2B-Instruct base (official F16 GGUF from ModelScope; quantized on board)",
+  "model_files": {
+    "base-f16.gguf": {
+      "bytes": 3447350304,
+      "sha256": "27b80f2e258f8372c9ee3a9b2293bd747cc08b18ed99709b57288cf457c42595"
+    },
+    "base-q8_0.gguf": {
+      "bytes": 1834427424,
+      "sha256": "8c0596e57290e1c00e721a882ba6b172a5eb9696940298ffd25d90c753a3b288"
+    },
+    "base-q4_k_m.gguf": {
+      "bytes": 1107409952,
+      "sha256": "90aafe3de4ccd24a1ea1d1a852d2d1fa4b0d9308fdd729ef60ad0ec48e4c107e"
+    },
+    "mmproj-base-f16.gguf": {
+      "bytes": 819394848,
+      "sha256": "c3d5afbef5287953acd57b4043d2269456e5761a4eaccb3b71b062996970aea5"
+    }
+  },
+  "baseline_02": {
+    "sample_id": "bench_hammer_screwdriver_base-q4_k_m.gguf_512_000",
+    "total_s": 2.679,
+    "prefill_s": 0.982,
+    "generate_s": 1.533,
+    "generated_tokens": 56,
+    "parse_status": "ok",
+    "derived": {
+      "decision": "incomplete",
+      "missing_required": [
+        "cable_bundle"
+      ],
+      "uncertain_required": [],
+      "answer_zh": "缺少线缆。"
+    },
+    "raw_text": "```json\n{\n  \"item_states\": {\n    \"screwdriver\": \"present\",\n    \"pliers\": \"present\",\n    \"cable_bundle\": \"absent\",\n    \"multimeter\": \"present\",\n    \"hammer\": \"present\"\n  }\n}\n```"
+  },
+  "bench": [
+    {
+      "quant": "q4_k_m",
+      "pixels": 384,
+      "image_max_tokens": 144,
+      "n_records": 105,
+      "n_measured": 100,
+      "n_errors": 0,
+      "n_parsed": 100,
+      "cold": {
+        "n": 3,
+        "total_s": {
+          "n": 3,
+          "mean": 2.197,
+          "p50": 2.055,
+          "p95": 2.532,
+          "min": 2.004,
+          "max": 2.532
+        },
+        "prefill_s": {
+          "n": 3,
+          "mean": 0.532,
+          "p50": 0.404,
+          "p95": 0.821,
+          "min": 0.37,
+          "max": 0.821
+        }
+      },
+      "steady": {
+        "total_s": {
+          "n": 100,
+          "mean": 1.622,
+          "p50": 1.616,
+          "p95": 1.67,
+          "min": 1.578,
+          "max": 1.681
+        },
+        "prefill_s": {
+          "n": 100,
+          "mean": 0.027,
+          "p50": 0.027,
+          "p95": 0.028,
+          "min": 0.027,
+          "max": 0.033
+        },
+        "generated_tokens": 5566,
+        "generate_s": 144.081,
+        "tokens_per_s": 38.63,
+        "requests_per_s": 0.6167
+      },
+      "decisions": {
+        "unknown": 34,
+        "incomplete": 33,
+        "complete": 33
+      },
+      "missing_required_counts": {
+        "pliers": 33,
+        "cable_bundle": 33
+      },
+      "tegrastats": {
+        "n": 346,
+        "status": "ok",
+        "ram_used_mb": {
+          "n": 346,
+          "mean": 5990.687861271676,
+          "peak": 6146.0
+        },
+        "ram_total_mb": {
+          "n": 346,
+          "mean": 7620.0,
+          "peak": 7620.0
+        },
+        "swap_used_mb": {
+          "n": 346,
+          "mean": 2166.066473988439,
+          "peak": 2263.0
+        },
+        "gr3d_freq_pct": {
+          "n": 346,
+          "mean": 85.3179190751445,
+          "peak": 99.0
+        },
+        "emc_freq_pct": {
+          "n": 0,
+          "mean": null,
+          "peak": null
+        },
+        "cpu_util_pct": {
+          "n": 2076,
+          "mean": 5.0491329479768785,
+          "peak": 96.0
+        },
+        "temperatures_c": {
+          "cpu": {
+            "n": 346,
+            "mean": 62.82277456647422,
+            "peak": 70.437
+          },
+          "gpu": {
+            "n": 346,
+            "mean": 64.51039595375742,
+            "peak": 72.375
+          },
+          "soc0": {
+            "n": 346,
+            "mean": 62.23139884393081,
+            "peak": 69.468
+          },
+          "soc1": {
+            "n": 346,
+            "mean": 61.900182080925,
+            "peak": 69.437
+          },
+          "soc2": {
+            "n": 346,
+            "mean": 62.22965028901758,
+            "peak": 69.625
+          },
+          "tj": {
+            "n": 346,
+            "mean": 64.51861849711003,
+            "peak": 72.375
+          }
+        },
+        "power_mw": {
+          "VDD_CPU_GPU_CV": {
+            "instant_mw": {
+              "n": 346,
+              "mean": 8001.791907514451,
+              "peak": 9120.0
+            },
+            "average_mw": {
+              "n": 346,
+              "mean": 7169.9884393063585,
+              "peak": 7872.0
+            }
+          },
+          "VDD_IN": {
+            "instant_mw": {
+              "n": 346,
+              "mean": 18145.06936416185,
+              "peak": 19858.0
+            },
+            "average_mw": {
+              "n": 346,
+              "mean": 16627.462427745664,
+              "peak": 17913.0
+            }
+          },
+          "VDD_SOC": {
+            "instant_mw": {
+              "n": 346,
+              "mean": 4575.687861271676,
+              "peak": 4927.0
+            },
+            "average_mw": {
+              "n": 346,
+              "mean": 4175.624277456647,
+              "peak": 4515.0
+            }
+          }
+        }
+      }
+    },
+    {
+      "quant": "q4_k_m",
+      "pixels": 512,
+      "image_max_tokens": 256,
+      "n_records": 105,
+      "n_measured": 100,
+      "n_errors": 0,
+      "n_parsed": 100,
+      "cold": {
+        "n": 3,
+        "total_s": {
+          "n": 3,
+          "mean": 2.351,
+          "p50": 2.297,
+          "p95": 2.625,
+          "min": 2.13,
+          "max": 2.625
+        },
+        "prefill_s": {
+          "n": 3,
+          "mean": 0.663,
+          "p50": 0.556,
+          "p95": 0.918,
+          "min": 0.517,
+          "max": 0.918
+        }
+      },
+      "steady": {
+        "total_s": {
+          "n": 100,
+          "mean": 1.664,
+          "p50": 1.662,
+          "p95": 1.698,
+          "min": 1.616,
+          "max": 1.719
+        },
+        "prefill_s": {
+          "n": 100,
+          "mean": 0.031,
+          "p50": 0.031,
+          "p95": 0.033,
+          "min": 0.03,
+          "max": 0.038
+        },
+        "generated_tokens": 5533,
+        "generate_s": 146.051,
+        "tokens_per_s": 37.88,
+        "requests_per_s": 0.6009
+      },
+      "decisions": {
+        "unknown": 34,
+        "incomplete": 33,
+        "complete": 33
+      },
+      "missing_required_counts": {
+        "cable_bundle": 33
+      },
+      "tegrastats": {
+        "n": 354,
+        "status": "ok",
+        "ram_used_mb": {
+          "n": 354,
+          "mean": 6148.242937853107,
+          "peak": 6251.0
+        },
+        "ram_total_mb": {
+          "n": 354,
+          "mean": 7620.0,
+          "peak": 7620.0
+        },
+        "swap_used_mb": {
+          "n": 354,
+          "mean": 2090.683615819209,
+          "peak": 2108.0
+        },
+        "gr3d_freq_pct": {
+          "n": 354,
+          "mean": 84.5677966101695,
+          "peak": 99.0
+        },
+        "emc_freq_pct": {
+          "n": 0,
+          "mean": null,
+          "peak": null
+        },
+        "cpu_util_pct": {
+          "n": 2124,
+          "mean": 6.944444444444445,
+          "peak": 100.0
+        },
+        "temperatures_c": {
+          "cpu": {
+            "n": 354,
+            "mean": 71.44330790960474,
+            "peak": 72.781
+          },
+          "gpu": {
+            "n": 354,
+            "mean": 73.09390677966125,
+            "peak": 74.25
+          },
+          "soc0": {
+            "n": 354,
+            "mean": 70.75589548022624,
+            "peak": 71.531
+          },
+          "soc1": {
+            "n": 354,
+            "mean": 70.65374576271219,
+            "peak": 71.406
+          },
+          "soc2": {
+            "n": 354,
+            "mean": 70.76904237288163,
+            "peak": 71.562
+          },
+          "tj": {
+            "n": 354,
+            "mean": 73.09875988700588,
+            "peak": 74.25
+          }
+        },
+        "power_mw": {
+          "VDD_CPU_GPU_CV": {
+            "instant_mw": {
+              "n": 354,
+              "mean": 8091.847457627118,
+              "peak": 9338.0
+            },
+            "average_mw": {
+              "n": 354,
+              "mean": 7794.62429378531,
+              "peak": 7893.0
+            }
+          },
+          "VDD_IN": {
+            "instant_mw": {
+              "n": 354,
+              "mean": 18363.43220338983,
+              "peak": 20210.0
+            },
+            "average_mw": {
+              "n": 354,
+              "mean": 17780.765536723164,
+              "peak": 17979.0
+            }
+          },
+          "VDD_SOC": {
+            "instant_mw": {
+              "n": 354,
+              "mean": 4656.477401129943,
+              "peak": 4966.0
+            },
+            "average_mw": {
+              "n": 354,
+              "mean": 4484.629943502825,
+              "peak": 4545.0
+            }
+          }
+        }
+      }
+    },
+    {
+      "quant": "q4_k_m",
+      "pixels": 768,
+      "image_max_tokens": 576,
+      "n_records": 105,
+      "n_measured": 100,
+      "n_errors": 0,
+      "n_parsed": 100,
+      "cold": {
+        "n": 3,
+        "total_s": {
+          "n": 3,
+          "mean": 3.024,
+          "p50": 2.958,
+          "p95": 3.179,
+          "min": 2.935,
+          "max": 3.179
+        },
+        "prefill_s": {
+          "n": 3,
+          "mean": 1.306,
+          "p50": 1.226,
+          "p95": 1.53,
+          "min": 1.163,
+          "max": 1.53
+        }
+      },
+      "steady": {
+        "total_s": {
+          "n": 100,
+          "mean": 1.709,
+          "p50": 1.709,
+          "p95": 1.741,
+          "min": 1.66,
+          "max": 1.759
+        },
+        "prefill_s": {
+          "n": 100,
+          "mean": 0.028,
+          "p50": 0.028,
+          "p95": 0.03,
+          "min": 0.027,
+          "max": 0.036
+        },
+        "generated_tokens": 5533,
+        "generate_s": 147.63,
+        "tokens_per_s": 37.48,
+        "requests_per_s": 0.5851
+      },
+      "decisions": {
+        "unknown": 34,
+        "incomplete": 33,
+        "complete": 33
+      },
+      "missing_required_counts": {
+        "cable_bundle": 33
+      },
+      "tegrastats": {
+        "n": 368,
+        "status": "ok",
+        "ram_used_mb": {
+          "n": 368,
+          "mean": 6340.983695652174,
+          "peak": 6488.0
+        },
+        "ram_total_mb": {
+          "n": 368,
+          "mean": 7620.0,
+          "peak": 7620.0
+        },
+        "swap_used_mb": {
+          "n": 368,
+          "mean": 2147.75,
+          "peak": 2162.0
+        },
+        "gr3d_freq_pct": {
+          "n": 368,
+          "mean": 83.10054347826087,
+          "peak": 99.0
+        },
+        "emc_freq_pct": {
+          "n": 0,
+          "mean": null,
+          "peak": null
+        },
+        "cpu_util_pct": {
+          "n": 2208,
+          "mean": 6.4461050724637685,
+          "peak": 100.0
+        },
+        "temperatures_c": {
+          "cpu": {
+            "n": 368,
+            "mean": 71.78585597826113,
+            "peak": 72.718
+          },
+          "gpu": {
+            "n": 368,
+            "mean": 73.42285869565242,
+            "peak": 74.375
+          },
+          "soc0": {
+            "n": 368,
+            "mean": 71.11866576086982,
+            "peak": 71.531
+          },
+          "soc1": {
+            "n": 368,
+            "mean": 71.04820652173944,
+            "peak": 71.437
+          },
+          "soc2": {
+            "n": 368,
+            "mean": 71.11400543478287,
+            "peak": 71.718
+          },
+          "tj": {
+            "n": 368,
+            "mean": 73.42744565217414,
+            "peak": 74.375
+          }
+        },
+        "power_mw": {
+          "VDD_CPU_GPU_CV": {
+            "instant_mw": {
+              "n": 368,
+              "mean": 7973.904891304348,
+              "peak": 9401.0
+            },
+            "average_mw": {
+              "n": 368,
+              "mean": 7839.410326086957,
+              "peak": 7883.0
+            }
+          },
+          "VDD_IN": {
+            "instant_mw": {
+              "n": 368,
+              "mean": 18246.195652173912,
+              "peak": 20412.0
+            },
+            "average_mw": {
+              "n": 368,
+              "mean": 17905.114130434784,
+              "peak": 18004.0
+            }
+          },
+          "VDD_SOC": {
+            "instant_mw": {
+              "n": 368,
+              "mean": 4659.817934782609,
+              "peak": 4997.0
+            },
+            "average_mw": {
+              "n": 368,
+              "mean": 4534.209239130435,
+              "peak": 4567.0
+            }
+          }
+        }
+      }
+    },
+    {
+      "quant": "q8_0",
+      "pixels": 384,
+      "image_max_tokens": 144,
+      "n_records": 105,
+      "n_measured": 100,
+      "n_errors": 0,
+      "n_parsed": 100,
+      "cold": {
+        "n": 3,
+        "total_s": {
+          "n": 3,
+          "mean": 2.444,
+          "p50": 2.492,
+          "p95": 2.499,
+          "min": 2.34,
+          "max": 2.499
+        },
+        "prefill_s": {
+          "n": 3,
+          "mean": 0.535,
+          "p50": 0.389,
+          "p95": 0.862,
+          "min": 0.353,
+          "max": 0.862
+        }
+      },
+      "steady": {
+        "total_s": {
+          "n": 100,
+          "mean": 2.003,
+          "p50": 1.983,
+          "p95": 2.083,
+          "min": 1.945,
+          "max": 2.095
+        },
+        "prefill_s": {
+          "n": 100,
+          "mean": 0.033,
+          "p50": 0.034,
+          "p95": 0.034,
+          "min": 0.033,
+          "max": 0.034
+        },
+        "generated_tokens": 5599,
+        "generate_s": 180.826,
+        "tokens_per_s": 30.96,
+        "requests_per_s": 0.4992
+      },
+      "decisions": {
+        "unknown": 67,
+        "incomplete": 33
+      },
+      "missing_required_counts": {
+        "pliers": 33,
+        "cable_bundle": 33,
+        "hammer": 33
+      },
+      "tegrastats": {
+        "n": 423,
+        "status": "ok",
+        "ram_used_mb": {
+          "n": 423,
+          "mean": 6772.80378250591,
+          "peak": 6856.0
+        },
+        "ram_total_mb": {
+          "n": 423,
+          "mean": 7620.0,
+          "peak": 7620.0
+        },
+        "swap_used_mb": {
+          "n": 423,
+          "mean": 2234.432624113475,
+          "peak": 2249.0
+        },
+        "gr3d_freq_pct": {
+          "n": 423,
+          "mean": 86.62647754137116,
+          "peak": 99.0
+        },
+        "emc_freq_pct": {
+          "n": 0,
+          "mean": null,
+          "peak": null
+        },
+        "cpu_util_pct": {
+          "n": 2538,
+          "mean": 4.531126871552403,
+          "peak": 73.0
+        },
+        "temperatures_c": {
+          "cpu": {
+            "n": 423,
+            "mean": 71.93579905437373,
+            "peak": 73.125
+          },
+          "gpu": {
+            "n": 423,
+            "mean": 73.39605910165511,
+            "peak": 74.312
+          },
+          "soc0": {
+            "n": 423,
+            "mean": 71.19921749409005,
+            "peak": 71.843
+          },
+          "soc1": {
+            "n": 423,
+            "mean": 71.14944208037849,
+            "peak": 71.875
+          },
+          "soc2": {
+            "n": 423,
+            "mean": 71.23325059101685,
+            "peak": 71.906
+          },
+          "tj": {
+            "n": 423,
+            "mean": 73.40418439716339,
+            "peak": 74.312
+          }
+        },
+        "power_mw": {
+          "VDD_CPU_GPU_CV": {
+            "instant_mw": {
+              "n": 423,
+              "mean": 7552.089834515366,
+              "peak": 8404.0
+            },
+            "average_mw": {
+              "n": 423,
+              "mean": 7703.90780141844,
+              "peak": 7726.0
+            }
+          },
+          "VDD_IN": {
+            "instant_mw": {
+              "n": 423,
+              "mean": 18951.217494089833,
+              "peak": 20412.0
+            },
+            "average_mw": {
+              "n": 423,
+              "mean": 17917.8463356974,
+              "peak": 18090.0
+            }
+          },
+          "VDD_SOC": {
+            "instant_mw": {
+              "n": 423,
+              "mean": 5177.63829787234,
+              "peak": 5465.0
+            },
+            "average_mw": {
+              "n": 423,
+              "mean": 4602.234042553191,
+              "peak": 4692.0
+            }
+          }
+        }
+      }
+    },
+    {
+      "quant": "q8_0",
+      "pixels": 512,
+      "image_max_tokens": 256,
+      "n_records": 105,
+      "n_measured": 100,
+      "n_errors": 0,
+      "n_parsed": 100,
+      "cold": {
+        "n": 3,
+        "total_s": {
+          "n": 3,
+          "mean": 2.732,
+          "p50": 2.706,
+          "p95": 2.909,
+          "min": 2.58,
+          "max": 2.909
+        },
+        "prefill_s": {
+          "n": 3,
+          "mean": 0.648,
+          "p50": 0.534,
+          "p95": 0.916,
+          "min": 0.493,
+          "max": 0.916
+        }
+      },
+      "steady": {
+        "total_s": {
+          "n": 100,
+          "mean": 2.034,
+          "p50": 2.012,
+          "p95": 2.115,
+          "min": 1.977,
+          "max": 2.135
+        },
+        "prefill_s": {
+          "n": 100,
+          "mean": 0.037,
+          "p50": 0.037,
+          "p95": 0.04,
+          "min": 0.036,
+          "max": 0.046
+        },
+        "generated_tokens": 5599,
+        "generate_s": 182.731,
+        "tokens_per_s": 30.64,
+        "requests_per_s": 0.4915
+      },
+      "decisions": {
+        "unknown": 67,
+        "incomplete": 33
+      },
+      "missing_required_counts": {
+        "pliers": 33,
+        "cable_bundle": 33,
+        "hammer": 33
+      },
+      "tegrastats": {
+        "n": 431,
+        "status": "ok",
+        "ram_used_mb": {
+          "n": 431,
+          "mean": 6829.013921113689,
+          "peak": 6963.0
+        },
+        "ram_total_mb": {
+          "n": 431,
+          "mean": 7620.0,
+          "peak": 7620.0
+        },
+        "swap_used_mb": {
+          "n": 431,
+          "mean": 2258.781902552204,
+          "peak": 2323.0
+        },
+        "gr3d_freq_pct": {
+          "n": 431,
+          "mean": 85.09744779582367,
+          "peak": 99.0
+        },
+        "emc_freq_pct": {
+          "n": 0,
+          "mean": null,
+          "peak": null
+        },
+        "cpu_util_pct": {
+          "n": 2586,
+          "mean": 7.039829853054911,
+          "peak": 100.0
+        },
+        "temperatures_c": {
+          "cpu": {
+            "n": 431,
+            "mean": 72.07996751740163,
+            "peak": 73.25
+          },
+          "gpu": {
+            "n": 431,
+            "mean": 73.48974245939709,
+            "peak": 74.281
+          },
+          "soc0": {
+            "n": 431,
+            "mean": 71.29034570765688,
+            "peak": 71.781
+          },
+          "soc1": {
+            "n": 431,
+            "mean": 71.25709280742483,
+            "peak": 71.781
+          },
+          "soc2": {
+            "n": 431,
+            "mean": 71.33310904872414,
+            "peak": 71.812
+          },
+          "tj": {
+            "n": 431,
+            "mean": 73.49562180974512,
+            "peak": 74.281
+          }
+        },
+        "power_mw": {
+          "VDD_CPU_GPU_CV": {
+            "instant_mw": {
+              "n": 431,
+              "mean": 7567.647331786543,
+              "peak": 8973.0
+            },
+            "average_mw": {
+              "n": 431,
+              "mean": 7626.046403712297,
+              "peak": 7634.0
+            }
+          },
+          "VDD_IN": {
+            "instant_mw": {
+              "n": 431,
+              "mean": 18960.0464037123,
+              "peak": 21003.0
+            },
+            "average_mw": {
+              "n": 431,
+              "mean": 18095.96287703016,
+              "peak": 18212.0
+            }
+          },
+          "VDD_SOC": {
+            "instant_mw": {
+              "n": 431,
+              "mean": 5173.053364269142,
+              "peak": 5504.0
+            },
+            "average_mw": {
+              "n": 431,
+              "mean": 4723.269141531323,
+              "peak": 4779.0
+            }
+          }
+        }
+      }
+    },
+    {
+      "quant": "q8_0",
+      "pixels": 768,
+      "image_max_tokens": 576,
+      "n_records": 105,
+      "n_measured": 100,
+      "n_errors": 0,
+      "n_parsed": 100,
+      "cold": {
+        "n": 3,
+        "total_s": {
+          "n": 3,
+          "mean": 3.339,
+          "p50": 3.221,
+          "p95": 3.615,
+          "min": 3.18,
+          "max": 3.615
+        },
+        "prefill_s": {
+          "n": 3,
+          "mean": 1.285,
+          "p50": 1.138,
+          "p95": 1.603,
+          "min": 1.115,
+          "max": 1.603
+        }
+      },
+      "steady": {
+        "total_s": {
+          "n": 100,
+          "mean": 2.046,
+          "p50": 2.046,
+          "p95": 2.073,
+          "min": 2.002,
+          "max": 2.148
+        },
+        "prefill_s": {
+          "n": 100,
+          "mean": 0.034,
+          "p50": 0.034,
+          "p95": 0.036,
+          "min": 0.033,
+          "max": 0.042
+        },
+        "generated_tokens": 5500,
+        "generate_s": 180.875,
+        "tokens_per_s": 30.41,
+        "requests_per_s": 0.4887
+      },
+      "decisions": {
+        "unknown": 100
+      },
+      "missing_required_counts": {},
+      "tegrastats": {
+        "n": 435,
+        "status": "ok",
+        "ram_used_mb": {
+          "n": 435,
+          "mean": 7057.402298850575,
+          "peak": 7204.0
+        },
+        "ram_total_mb": {
+          "n": 435,
+          "mean": 7620.0,
+          "peak": 7620.0
+        },
+        "swap_used_mb": {
+          "n": 435,
+          "mean": 2267.841379310345,
+          "peak": 2325.0
+        },
+        "gr3d_freq_pct": {
+          "n": 435,
+          "mean": 83.95862068965518,
+          "peak": 99.0
+        },
+        "emc_freq_pct": {
+          "n": 0,
+          "mean": null,
+          "peak": null
+        },
+        "cpu_util_pct": {
+          "n": 2610,
+          "mean": 5.423371647509579,
+          "peak": 100.0
+        },
+        "temperatures_c": {
+          "cpu": {
+            "n": 435,
+            "mean": 72.1088873563221,
+            "peak": 72.906
+          },
+          "gpu": {
+            "n": 435,
+            "mean": 73.51991724137955,
+            "peak": 74.281
+          },
+          "soc0": {
+            "n": 435,
+            "mean": 71.35135632183933,
+            "peak": 71.812
+          },
+          "soc1": {
+            "n": 435,
+            "mean": 71.34158620689676,
+            "peak": 71.781
+          },
+          "soc2": {
+            "n": 435,
+            "mean": 71.3916597701152,
+            "peak": 71.906
+          },
+          "tj": {
+            "n": 435,
+            "mean": 73.52149655172438,
+            "peak": 74.281
+          }
+        },
+        "power_mw": {
+          "VDD_CPU_GPU_CV": {
+            "instant_mw": {
+              "n": 435,
+              "mean": 7461.103448275862,
+              "peak": 8546.0
+            },
+            "average_mw": {
+              "n": 435,
+              "mean": 7571.680459770115,
+              "peak": 7579.0
+            }
+          },
+          "VDD_IN": {
+            "instant_mw": {
+              "n": 435,
+              "mean": 18819.9816091954,
+              "peak": 20451.0
+            },
+            "average_mw": {
+              "n": 435,
+              "mean": 18188.777011494254,
+              "peak": 18260.0
+            }
+          },
+          "VDD_SOC": {
+            "instant_mw": {
+              "n": 435,
+              "mean": 5162.119540229885,
+              "peak": 5474.0
+            },
+            "average_mw": {
+              "n": 435,
+              "mean": 4792.712643678161,
+              "peak": 4830.0
+            }
+          }
+        }
+      }
+    }
+  ],
+  "f16": {
+    "status": "oom_killed",
+    "configs": {
+      "384": {
+        "n_records": 105,
+        "n_errors": 105,
+        "error_example": "ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "512": {
+        "n_records": 27,
+        "n_errors": 27,
+        "error_example": "ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      }
+    },
+    "kernel": [
+      "Nov 25 17:20:59 yahboom kernel: pulseaudio invoked oom-killer: gfp_mask=0xcc0(GFP_KERNEL), order=0, oom_score_adj=0",
+      "Nov 25 17:20:59 yahboom kernel: oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=user.slice,mems_allowed=0,global_oom,task_memcg=/user.slice/user-1000.slice/session-59.scope,task=llama-server,pid=36527,uid=1000",
+      "Nov 25 17:20:59 yahboom kernel: Out of memory: Killed process 36527 (llama-server) total-vm:43255480kB, anon-rss:0kB, file-rss:613512kB, shmem-rss:0kB, UID:1000 pgtables:2336kB oom_score_adj:0",
+      "Nov 25 17:21:43 yahboom kernel: llama-server invoked oom-killer: gfp_mask=0x2dc2(GFP_KERNEL|__GFP_HIGHMEM|__GFP_NOWARN|__GFP_ZERO), order=0, oom_score_adj=0",
+      "Nov 25 17:21:43 yahboom kernel: oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=user.slice,mems_allowed=0,global_oom,task_memcg=/user.slice/user-1000.slice/session-59.scope,task=llama-server,pid=36705,uid=1000",
+      "Nov 25 17:21:43 yahboom kernel: Out of memory: Killed process 36705 (llama-server) total-vm:43220848kB, anon-rss:0kB, file-rss:615152kB, shmem-rss:0kB, UID:1000 pgtables:2272kB oom_score_adj:0"
+    ]
+  },
+  "tegrastats_global": {
+    "n": 2555,
+    "status": "ok",
+    "ram_used_mb": {
+      "n": 2555,
+      "mean": 6529.356947162427,
+      "peak": 7498.0
+    },
+    "ram_total_mb": {
+      "n": 2555,
+      "mean": 7620.0,
+      "peak": 7620.0
+    },
+    "swap_used_mb": {
+      "n": 2555,
+      "mean": 2240.79060665362,
+      "peak": 3422.0
+    },
+    "gr3d_freq_pct": {
+      "n": 2555,
+      "mean": 78.73659491193737,
+      "peak": 99.0
+    },
+    "emc_freq_pct": {
+      "n": 0,
+      "mean": null,
+      "peak": null
+    },
+    "cpu_util_pct": {
+      "n": 15330,
+      "mean": 8.539204174820613,
+      "peak": 100.0
+    },
+    "temperatures_c": {
+      "cpu": {
+        "n": 2555,
+        "mean": 70.15746144814008,
+        "peak": 73.25
+      },
+      "gpu": {
+        "n": 2555,
+        "mean": 71.51489471624207,
+        "peak": 74.375
+      },
+      "soc0": {
+        "n": 2555,
+        "mean": 69.46467475538074,
+        "peak": 71.843
+      },
+      "soc1": {
+        "n": 2555,
+        "mean": 69.40077495107565,
+        "peak": 71.875
+      },
+      "soc2": {
+        "n": 2555,
+        "mean": 69.43479765166292,
+        "peak": 71.906
+      },
+      "tj": {
+        "n": 2555,
+        "mean": 71.58398904109526,
+        "peak": 74.375
+      }
+    },
+    "power_mw": {
+      "VDD_CPU_GPU_CV": {
+        "instant_mw": {
+          "n": 2555,
+          "mean": 7329.126810176125,
+          "peak": 9401.0
+        },
+        "average_mw": {
+          "n": 2555,
+          "mean": 7589.109197651664,
+          "peak": 7893.0
+        }
+      },
+      "VDD_IN": {
+        "instant_mw": {
+          "n": 2555,
+          "mean": 17759.954990215265,
+          "peak": 21003.0
+        },
+        "average_mw": {
+          "n": 2555,
+          "mean": 17753.204305283758,
+          "peak": 18260.0
+        }
+      },
+      "VDD_SOC": {
+        "instant_mw": {
+          "n": 2555,
+          "mean": 4680.1401174168295,
+          "peak": 5504.0
+        },
+        "average_mw": {
+          "n": 2555,
+          "mean": 4565.4947162426615,
+          "peak": 4830.0
+        }
+      }
+    }
+  },
+  "demo": {
+    "app": "qwen_vlm.app.app",
+    "backend": "llamacpp",
+    "model": "base-q4_k_m.gguf",
+    "pixels": 512,
+    "server": "http://127.0.0.1:8080",
+    "rows": [
+      {
+        "image": "data/smoke/b0/bench_hammer_screwdriver.png",
+        "mode": "读取保存图片",
+        "required": [
+          "screwdriver",
+          "pliers",
+          "cable_bundle",
+          "multimeter",
+          "hammer"
+        ],
+        "question_zh": "按照本次实验清单，还缺少什么器材？",
+        "wall_s": 2.395,
+        "capture_time": "2026-11-25T17:23:22",
+        "state_markdown": "| 类别 | 状态 | 是否在本次清单 |\n| --- | --- | --- |\n| 螺丝刀 | 在（present） | 是 |\n| 钳子 | 在（present） | 是 |\n| 线缆 | 缺失（absent） | 是 |\n| 万用表 | 在（present） | 是 |\n| 锤子 | 在（present） | 是 |",
+        "missing": "线缆",
+        "answer_raw": "缺少线缆。\n\n原始输出：\n```json\n{\n  \"item_states\": {\n    \"screwdriver\": \"present\",\n    \"pliers\": \"present\",\n    \"cable_bundle\": \"absent\",\n    \"multimeter\": \"present\",\n    \"hammer\": \"present\"\n  }\n}\n```",
+        "status": "总耗时 1.871 秒；解析 ok；重试 0 次；生成 56 token；prompt 1 token；prefill 0.068 秒；生成 1.596 秒。"
+      },
+      {
+        "image": "data/smoke/b0/bench_multimeter.png",
+        "mode": "读取保存图片",
+        "required": [
+          "screwdriver",
+          "pliers",
+          "cable_bundle",
+          "multimeter",
+          "hammer"
+        ],
+        "question_zh": "按照本次实验清单，还缺少什么器材？",
+        "wall_s": 2.229,
+        "capture_time": "2026-11-25T17:23:24",
+        "state_markdown": "| 类别 | 状态 | 是否在本次清单 |\n| --- | --- | --- |\n| 螺丝刀 | 在（present） | 是 |\n| 钳子 | 在（present） | 是 |\n| 线缆 | 在（present） | 是 |\n| 万用表 | 在（present） | 是 |\n| 锤子 | 在（present） | 是 |",
+        "missing": "（清单内没有缺失项）",
+        "answer_raw": "所需器材齐全：螺丝刀、钳子、线缆、万用表、锤子。\n\n原始输出：\n```json\n{\n  \"item_states\": {\n    \"screwdriver\": \"present\",\n    \"pliers\": \"present\",\n    \"cable_bundle\": \"present\",\n    \"multimeter\": \"present\",\n    \"hammer\": \"present\"\n  }\n}\n```",
+        "status": "总耗时 1.652 秒；解析 ok；重试 0 次；生成 55 token；prompt 1 token；prefill 0.055 秒；生成 1.456 秒。"
+      },
+      {
+        "image": "data/smoke/b0/bench_empty.png",
+        "mode": "读取保存图片",
+        "required": [
+          "screwdriver",
+          "pliers",
+          "cable_bundle",
+          "multimeter",
+          "hammer"
+        ],
+        "question_zh": "按照本次实验清单，还缺少什么器材？",
+        "wall_s": 2.145,
+        "capture_time": "2026-11-25T17:23:26",
+        "state_markdown": "| 类别 | 状态 | 是否在本次清单 |\n| --- | --- | --- |\n| 螺丝刀 | 无法确认（unknown） | 是 |\n| 钳子 | 无法确认（unknown） | 是 |\n| 线缆 | 无法确认（unknown） | 是 |\n| 万用表 | 无法确认（unknown） | 是 |\n| 锤子 | 无法确认（unknown） | 是 |",
+        "missing": "（清单内没有缺失项）；无法确认：螺丝刀、钳子、线缆、万用表、锤子",
+        "answer_raw": "螺丝刀、钳子、线缆、万用表、锤子是否齐备暂时无法确认。\n\n原始输出：\n```json\n{\n  \"item_states\": {\n    \"screwdriver\": \"unknown\",\n    \"pliers\": \"unknown\",\n    \"cable_bundle\": \"unknown\",\n    \"multimeter\": \"unknown\",\n    \"hammer\": \"unknown\"\n  }\n}\n```",
+        "status": "总耗时 1.627 秒；解析 ok；重试 0 次；生成 55 token；prompt 1 token；prefill 0.055 秒；生成 1.446 秒。"
+      }
+    ]
+  },
+  "notes": [
+    "cold = first presentation of each of the three smoke images (prompt_tokens > 100); n=3.",
+    "steady = 100 measured requests; repeated identical images hit llama-server prompt cache, so prefill is ~0.03 s.",
+    "per-config tegrastats windows start when the JSONL is created (after server health) and exclude model load.",
+    "real-photo accuracy was not measured: data/raw/session_001 is absent from this clone and the final adapter is not included."
+  ]
+}

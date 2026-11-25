@@ -1,0 +1,1 @@
+像素档 512：请确认 llama-server 使用 --image-min-tokens 64 --image-max-tokens 256

@@ -1,0 +1,63 @@
+{
+  "app": "qwen_vlm.app.app",
+  "backend": "llamacpp",
+  "model": "base-q4_k_m.gguf",
+  "pixels": 512,
+  "server": "http://127.0.0.1:8080",
+  "rows": [
+    {
+      "image": "data/smoke/b0/bench_hammer_screwdriver.png",
+      "mode": "读取保存图片",
+      "required": [
+        "screwdriver",
+        "pliers",
+        "cable_bundle",
+        "multimeter",
+        "hammer"
+      ],
+      "question_zh": "按照本次实验清单，还缺少什么器材？",
+      "wall_s": 2.395,
+      "capture_time": "2026-11-25T17:23:22",
+      "state_markdown": "| 类别 | 状态 | 是否在本次清单 |\n| --- | --- | --- |\n| 螺丝刀 | 在（present） | 是 |\n| 钳子 | 在（present） | 是 |\n| 线缆 | 缺失（absent） | 是 |\n| 万用表 | 在（present） | 是 |\n| 锤子 | 在（present） | 是 |",
+      "missing": "线缆",
+      "answer_raw": "缺少线缆。\n\n原始输出：\n```json\n{\n  \"item_states\": {\n    \"screwdriver\": \"present\",\n    \"pliers\": \"present\",\n    \"cable_bundle\": \"absent\",\n    \"multimeter\": \"present\",\n    \"hammer\": \"present\"\n  }\n}\n```",
+      "status": "总耗时 1.871 秒；解析 ok；重试 0 次；生成 56 token；prompt 1 token；prefill 0.068 秒；生成 1.596 秒。"
+    },
+    {
+      "image": "data/smoke/b0/bench_multimeter.png",
+      "mode": "读取保存图片",
+      "required": [
+        "screwdriver",
+        "pliers",
+        "cable_bundle",
+        "multimeter",
+        "hammer"
+      ],
+      "question_zh": "按照本次实验清单，还缺少什么器材？",
+      "wall_s": 2.229,
+      "capture_time": "2026-11-25T17:23:24",
+      "state_markdown": "| 类别 | 状态 | 是否在本次清单 |\n| --- | --- | --- |\n| 螺丝刀 | 在（present） | 是 |\n| 钳子 | 在（present） | 是 |\n| 线缆 | 在（present） | 是 |\n| 万用表 | 在（present） | 是 |\n| 锤子 | 在（present） | 是 |",
+      "missing": "（清单内没有缺失项）",
+      "answer_raw": "所需器材齐全：螺丝刀、钳子、线缆、万用表、锤子。\n\n原始输出：\n```json\n{\n  \"item_states\": {\n    \"screwdriver\": \"present\",\n    \"pliers\": \"present\",\n    \"cable_bundle\": \"present\",\n    \"multimeter\": \"present\",\n    \"hammer\": \"present\"\n  }\n}\n```",
+      "status": "总耗时 1.652 秒；解析 ok；重试 0 次；生成 55 token；prompt 1 token；prefill 0.055 秒；生成 1.456 秒。"
+    },
+    {
+      "image": "data/smoke/b0/bench_empty.png",
+      "mode": "读取保存图片",
+      "required": [
+        "screwdriver",
+        "pliers",
+        "cable_bundle",
+        "multimeter",
+        "hammer"
+      ],
+      "question_zh": "按照本次实验清单，还缺少什么器材？",
+      "wall_s": 2.145,
+      "capture_time": "2026-11-25T17:23:26",
+      "state_markdown": "| 类别 | 状态 | 是否在本次清单 |\n| --- | --- | --- |\n| 螺丝刀 | 无法确认（unknown） | 是 |\n| 钳子 | 无法确认（unknown） | 是 |\n| 线缆 | 无法确认（unknown） | 是 |\n| 万用表 | 无法确认（unknown） | 是 |\n| 锤子 | 无法确认（unknown） | 是 |",
+      "missing": "（清单内没有缺失项）；无法确认：螺丝刀、钳子、线缆、万用表、锤子",
+      "answer_raw": "螺丝刀、钳子、线缆、万用表、锤子是否齐备暂时无法确认。\n\n原始输出：\n```json\n{\n  \"item_states\": {\n    \"screwdriver\": \"unknown\",\n    \"pliers\": \"unknown\",\n    \"cable_bundle\": \"unknown\",\n    \"multimeter\": \"unknown\",\n    \"hammer\": \"unknown\"\n  }\n}\n```",
+      "status": "总耗时 1.627 秒；解析 ok；重试 0 次；生成 55 token；prompt 1 token；prefill 0.055 秒；生成 1.446 秒。"
+    }
+  ]
+}

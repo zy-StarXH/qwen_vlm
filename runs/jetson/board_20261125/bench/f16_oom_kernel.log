@@ -1,0 +1,6 @@
+Nov 25 17:20:59 yahboom kernel: pulseaudio invoked oom-killer: gfp_mask=0xcc0(GFP_KERNEL), order=0, oom_score_adj=0
+Nov 25 17:20:59 yahboom kernel: oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=user.slice,mems_allowed=0,global_oom,task_memcg=/user.slice/user-1000.slice/session-59.scope,task=llama-server,pid=36527,uid=1000
+Nov 25 17:20:59 yahboom kernel: Out of memory: Killed process 36527 (llama-server) total-vm:43255480kB, anon-rss:0kB, file-rss:613512kB, shmem-rss:0kB, UID:1000 pgtables:2336kB oom_score_adj:0
+Nov 25 17:21:43 yahboom kernel: llama-server invoked oom-killer: gfp_mask=0x2dc2(GFP_KERNEL|__GFP_HIGHMEM|__GFP_NOWARN|__GFP_ZERO), order=0, oom_score_adj=0
+Nov 25 17:21:43 yahboom kernel: oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=user.slice,mems_allowed=0,global_oom,task_memcg=/user.slice/user-1000.slice/session-59.scope,task=llama-server,pid=36705,uid=1000
+Nov 25 17:21:43 yahboom kernel: Out of memory: Killed process 36705 (llama-server) total-vm:43220848kB, anon-rss:0kB, file-rss:615152kB, shmem-rss:0kB, UID:1000 pgtables:2272kB oom_score_adj:0

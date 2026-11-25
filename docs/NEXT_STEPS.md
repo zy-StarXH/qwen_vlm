@@ -1,12 +1,12 @@
 # 下一步执行计划（交给接手的模型/同学）
 
-更新：2026-11-21。项目概况和接手规则见 `HANDOFF.md`。本文件记录实验计划、已验证的产物和恢复命令。
+更新：2026-11-25。项目概况和接手规则见 `HANDOFF.md`。本文件记录实验计划、已验证的产物和恢复命令。
 
 ## 本轮要做的事（2026-11-21 交接，先读这一节）
 
-2026-11-21 已完成本轮第 1–5 步，含正式三折、对比复核、27 组鲁棒性评测、最终 M 模型导出、服务器图片演示和报告交付。第 6 步待 Jetson Orin Nano 8GB 到手。`release/jetson_bundle_final/` 与 `runs/M_final/adapter/` 请在实例释放前下载备份。
+2026-11-21 已完成本轮第 1–5 步，含正式三折、对比复核、27 组鲁棒性评测、最终 M 模型导出、服务器图片演示和报告交付。2026-11-25 在 Jetson Orin Nano 8GB 上用本机重建的原始权重 bundle 完成第 6 步的 00–04（04 为图片模式演示）；最终 adapter、真实照片板端评测和摄像头仍待补。`release/jetson_bundle_final/` 与 `runs/M_final/adapter/` 请在实例释放前下载备份。
 
-**用户手头暂时没有 Jetson，本轮只做云端能做的事**（第 1–5 步），板端第 6 步暂缓。课程要求与证据的对应关系见 `docs/coursework_requirements.md`。第 3、5 步是为了补上课程要求里的缺口：鲁棒性评估、技术报告、演示和答辩材料。
+**Jetson 板端第 6 步已于 2026-11-25 部分完成**（00–04 与图片模式演示）；最终 adapter、真实照片板端评测和摄像头仍待补，见本节后面的第 6 步。课程要求与证据的对应关系见 `docs/coursework_requirements.md`。第 3、5 步是为了补上课程要求里的缺口：鲁棒性评估、技术报告、演示和答辩材料。
 
 按顺序做。每步做完跑 `pytest -q tests` 并单独 `git commit`。第 3 步中 B0 的部分不依赖训练结果，显存也够（训练约占 5.5 GiB），可以和第 1 步同时跑。
 
@@ -146,22 +146,30 @@ envs/qwen_vlm/bin/python -m qwen_vlm.app.app --server http://127.0.0.1:8097 --pi
    - 局限与改进；
    - 结论。
    
-   实验章参照 `reports/templates/`。数字只从 `runs/` 的 `metrics.json` 取。板端章节和板端数字全部写“待测（等待 Jetson 实测）”，不要用服务器数字顶替。
+   实验章参照 `reports/templates/`。数字只从 `runs/` 的 `metrics.json` 取。板端章节写已实测的原始权重构建、延迟、吞吐、内存和功耗，并注明只用于性能、不是任务质量；最终 M、真实照片准确率和摄像头仍写“待测”，不要用服务器数字顶替。
 2. **服务器上验证演示程序**：用最终模型的 Q4_K_M 在服务器上以图片模式启动 `src/qwen_vlm/app/app.py`，跑三类典型样例：器材齐全、有线缆但没万用表、遮挡。截图放进报告，作为板端演示前的备份证据。
-3. **演示视频脚本** `reports/demo_script.md`：逐个镜头写清楚。板子和摄像头的整体布置；齐全场景；拿走万用表但留下线缆；手遮住器材时模型回答 unknown；画面上显示延迟。拍摄要等板子到手。
+3. **演示视频脚本** `reports/demo_script.md`：逐个镜头写清楚。板子和摄像头的整体布置；齐全场景；拿走万用表但留下线缆；手遮住器材时模型回答 unknown；画面上显示延迟。拍摄要等摄像头到位。
 4. **答辩提纲** `reports/defense_outline.md`：用 5 分钟讲清问题、方法、结果。列出可能被问到的问题和答案，例如：为什么选 VLM 而不是 YOLO、为什么用 Orin Nano 8GB 跑 2B 的 VLM、数据只有 50 张怎么保证结论可信、合成图会不会造成泄漏、量化带来的精度和速度取舍。
 
 验收：两版报告、演示脚本与答辩提纲共四份文档已提交。章节、段落、表格、数字与截图逐项核对。`STATUS.md` 的 P6 行已更新。
 
-### 第 6 步（暂缓）：Jetson 实测
+### 第 6 步：Jetson 实测（2026-11-25 部分完成）
 
-用户暂时没有 Jetson，接手模型不要做这一步，也不要用服务器数据代替。板子到手后，由用户按 `deploy/jetson/README.md` 操作：
+板子已到手。因为 clone 没有服务器上的 `release/`、`runs/M_final/adapter/` 和 `data/raw/`，本轮用官方 Qwen3-VL-2B-Instruct F16 GGUF 在本机重建了原始权重 bundle，完成：
 
-1. 先用已打好的 `release/jetson_bundle_base/` 跑 `00`–`03`，测原模型在板上的 3 种量化 × 3 种分辨率（`03_bench.sh` 默认就扫这 9 种组合，并记录 `tegrastats`）。
-2. 再用 `release/jetson_bundle_final/` 加上 `MODEL_TAG=final` 跑 `02`–`04`，`04` 用摄像头做演示并录视频。
-3. 日志传回 `runs/jetson/`，再补全报告的板端章节（延迟、内存、功耗、优化前后对比）。
+- `00_probe`、`01_build_llamacpp`（b12425，CUDA sm_87）、`02_run_baseline`（Q4_K_M 512²）PASS。
+- `03_bench`：Q4_K_M/Q8_0 × 384²/512²/768² 共 6 档，每档 5 次预热 + 100 次正式请求，全部解析；F16 在 8 GB 上被 OOM killer 终止。
+- `04_app`：Gradio 已保存图片模式经 `/infer` 接口验证三张冒烟图，全部解析。
+- 数字、日志、模型哈希：`runs/jetson/board_20261125/`（先看 `summary.md`）。
 
-板子型号已定：用户决定使用手上的 Jetson Orin Nano 8GB，不再向老师确认。截止时间、报告篇幅与排版格式仍待用户告知。
+仍需完成，依赖用户备份或硬件：
+
+1. 恢复 `runs/M_final/adapter/` 或 `release/jetson_bundle_final/`，用 `MODEL_TAG=final` 重跑 `02`–`04`，得到最终 M 的板端输出。
+2. 恢复 `data/raw/session_001/` 后，在板上按 `deploy/jetson/README.md` 跑 `predict_llamacpp.py`，回传预测 JSONL 与 `tegrastats`，评测真实照片。最终模型训练时见过这些图，只能当部署检查，不能当泛化指标。
+3. 接上摄像头后跑 `04_app.sh`，录现场演示视频并补相机 FPS。
+4. 报告板端章节已填入原始权重的构建、延迟、吞吐、内存和功耗；任务质量、最终 M、摄像头仍标待测。
+
+板子型号已定：Jetson Orin Nano 8GB。截止时间、报告篇幅与排版格式仍待用户告知。
 
 ## 0. 当前状态（已完成，不要重做）
 
@@ -272,6 +280,6 @@ $P scripts/data_validate.py data/aug/v1/samples.jsonl
 
 - 每个 shell 先 `cd /root/gpufree-data/qwen_vlm && source env/activate.sh`，Python 一律用 `envs/qwen_vlm/bin/python`（不 source 会报 cuDNN 错误）。
 - 不改 `contracts/`、`src/qwen_vlm/common/`、`src/qwen_vlm/inference/base.py`。
-- 不编造结果；未跑的写"待测"。合成/冒烟数字不进报告。
+- 不编造结果；未跑的写"待测"。合成图/冒烟图的任务质量数字不进报告；板端冒烟图的延迟与资源数字仅在明确标注为计时用途时使用。
 - 每完成一个任务跑 `pytest -q tests` 并 `git commit`；推送需用户输入 GitHub 令牌（见 `docs/git_workflow.md`）。服务器外网慢，代理常断，直连 GitHub 可用。
 - 标注已全部完成，标注工具已关闭，不需要再启动。

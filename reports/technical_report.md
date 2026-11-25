@@ -4,7 +4,7 @@ Computer Vision Coursework 2 · Technical report
 
 ## Abstract
 
-This system checks whether a laboratory bench contains the equipment requested in a checklist. It uses Qwen3-VL-2B-Instruct to infer the state of each equipment category from a single overhead image. A deterministic rule then converts the states into a checklist decision. We study low-rank adaptation with paired supervision and box-guided image edits, and evaluate two deployment optimizations: language-weight quantization and input pixel budgets. Measurements on the NVIDIA L40 server use 50 photographs from nine bench layouts. M produced 2/31 false-complete decisions in the out-of-fold evaluation, compared with 7/31 for B0. Unknown recall remained low at 1/18 for M. Jetson Orin Nano 8GB measurements are pending.
+This system checks whether a laboratory bench contains the equipment requested in a checklist. It uses Qwen3-VL-2B-Instruct to infer the state of each equipment category from a single overhead image. A deterministic rule then converts the states into a checklist decision. We study low-rank adaptation with paired supervision and box-guided image edits, and evaluate two deployment optimizations: language-weight quantization and input pixel budgets. Measurements on the NVIDIA L40 server use 50 photographs from nine bench layouts. M produced 2/31 false-complete decisions in the out-of-fold evaluation, compared with 7/31 for B0. Unknown recall remained low at 1/18 for M. On Jetson Orin Nano 8GB, the base-weight deployment stack built and ran: Q4_K_M and Q8_0 fitted in 8 GB, while F16 was terminated by the out-of-memory killer. Board evaluation of the final adapter, the real photographs and the camera remains pending.
 
 ## 1. System design
 
@@ -81,18 +81,20 @@ The language GGUFs and shared visual GGUF have the following file sizes. [Export
 | `final-q4_k_m.gguf` | Q4_K_M | 1,107,410,048 | 1.031 |
 | `mmproj-final-f16.gguf` | F16 | 819,394,784 | 0.763 |
 
-The deployment bundle contains these GGUFs, the adapter, the project source snapshot, llama.cpp source and deployment instructions. All 91 listed files passed SHA256 verification. Q4_K_M and Q8_0 each ran 100 checklist requests on the L40 using training photographs, with 100 parsed responses per precision. These requests verify export and inference compatibility. The held-out-fold experiments provide the task-quality evidence. [Deployment bundle](../release/jetson_bundle_final) · [Bundle checksums](../runs/M_final/bundle_SHA256SUMS) · [Export verification](../runs/M_final/gguf_smoke_check.json)
+The deployment bundle contains these GGUFs, the adapter, the project source snapshot, llama.cpp source and deployment instructions. All 91 listed files passed SHA256 verification. Q4_K_M and Q8_0 each ran 100 checklist requests on the L40 using training photographs, with 100 parsed responses per precision. These requests verify export and inference compatibility. The held-out-fold experiments provide the task-quality evidence. Deployment bundle `release/jetson_bundle_final/` (restore from the cloud backup) · [Bundle checksums](../runs/M_final/bundle_SHA256SUMS) · [Export verification](../runs/M_final/gguf_smoke_check.json)
 
-The deployment test on Jetson Orin Nano 8GB and the camera demonstration are pending hardware access. The board results table reserves entries for decision accuracy, end-to-end latency and first-token timing, requests/s, generation token/s, camera display FPS, peak shared memory and power. Each configuration will record the JetPack version and power mode, with warm-up and comparable batch-1 requests.
+On 2026-11-25 the deployment stack was rebuilt and measured on a Jetson Orin Nano 8GB Engineering Reference Developer Kit Super (L4T R36.4.3, CUDA 12.6.11, MAXN_SUPER). The final adapter and the real-photo suite were not present in the local clone, so this run used the base Qwen3-VL-2B-Instruct weights: the official F16 GGUF (SHA256 `27b80f2e…2595`, ModelScope), requantized on the board with the pinned llama.cpp b12425 (`18b74fa4`) build to Q8_0 and Q4_K_M. llama.cpp was configured with CUDA sm_87 and built `llama-server`, `llama-mtmd-cli`, `llama-quantize` and `llama-bench`. A Q4_K_M 512² baseline returned a parsed checklist response. These measurements characterize the deployment stack and the device; they are not accuracy evidence for M.
 
 | Jetson Orin Nano 8GB evidence | Result |
 | --- | --- |
-| Build and image inference | Pending board measurement |
-| Task quality by precision and pixel budget | Pending board measurement |
-| End-to-end latency p50/p95 and first-token timing | Pending board measurement |
-| Requests/s, generation token/s and camera display FPS | Pending board measurement |
-| Peak shared memory and power | Pending board measurement |
-| Camera demonstration and video | Pending board measurement |
+| Build and image inference | Passed: b12425 CUDA sm_87 build; Q4_K_M 512² parsed response, 2.68 s cold end-to-end |
+| Task quality by precision and pixel budget | Not measured on board: the final adapter and the real photographs were unavailable. No smoke-image accuracy is reported. |
+| End-to-end latency p50/p95 and first-token timing | Q4_K_M cold p50 / p95 2.06/2.53, 2.30/2.63, 2.96/3.18 s at 384²/512²/768² (n=3); Q8_0 2.49/2.50, 2.71/2.91, 3.22/3.62 s. Cold prefill p50 0.40 / 0.56 / 1.23 s (Q4). Steady p50/p95 1.62/1.67, 1.66/1.70, 1.71/1.74 s (Q4) and 1.98/2.08, 2.01/2.12, 2.05/2.07 s (Q8). |
+| Requests/s, generation token/s and camera display FPS | Q4_K_M 0.62 / 0.60 / 0.59 request/s and 38.6 / 37.9 / 37.5 token/s at the three budgets; Q8_0 0.50 / 0.49 / 0.49 request/s and 31.0 / 30.6 / 30.4 token/s. Camera FPS not measured (no camera device). |
+| Peak shared memory and power | Q4_K_M peak 6.15–6.49 GB RAM and 19.9–20.4 W VDD_IN; Q8_0 6.86–7.20 GB and 20.4–21.0 W, including the desktop and agent session. F16 (3.21 GiB language weights plus 0.76 GiB mmproj) was terminated by the out-of-memory killer. |
+| Camera demonstration and video | Pending: no `/dev/video*` device. The Gradio saved-image mode was exercised through its `/infer` API on three smoke images (2.15–2.40 s wall, all responses parsed). |
+
+The benchmark inputs were the three synthetic smoke images. They are used only for timing and resource measurements, never for task-quality claims. The first presentation of each image is reported as cold (n=3). The 100 measured requests repeat the same three images and therefore hit llama-server's prompt cache; their prefill is about 0.03 s and their end-to-end time is dominated by generation. Per-configuration memory and power windows exclude model load and include the board's desktop and agent processes, because the 8 GB memory is shared with the operating system. An F16 language file did not fit under these conditions. Real-photo board accuracy, the final fine-tuned adapter and camera throughput remain unmeasured.
 
 ## 6. Optimizations
 
@@ -235,10 +237,10 @@ The dataset covers one acquisition session and nine layouts, with fold sizes of 
 
 The inpainted regions and synthetic occluders have recognizable textures. Real conditions have small denominators, and simulated brightness, blur and noise probe only image-level changes. Follow-up data could cover natural reflections, auto-exposure transitions and real hand occlusion. For low-confidence images an operator can request a second view for confirmation. The benchmark reports checklist decisions. The pair-consistency implementation expects two rows per pair. Each real pair contributes four rows because each view has two prompts, so the aggregate pair-consistency metric is undefined on this suite.
 
-The target's shared-memory behavior, build compatibility, capture rate, sustained latency and power consumption require board logs. The uploaded-image mode on the server records the software behavior under controlled inputs. Camera throughput and performance on Jetson Orin Nano 8GB remain pending.
+The Jetson build is now verified: llama.cpp b12425 compiles for sm_87, and Q4_K_M and Q8_0 run in the 8 GB shared-memory budget, while F16 is terminated by the out-of-memory killer. The board latency figures come from three synthetic scenes and from repeated requests that hit the prompt cache, so they do not cover real-photo variation or a cold prefill for every scene. The final adapter, real-photo board accuracy, capture rate and camera throughput remain unmeasured.
 
 ## 9. Conclusion
 
 On the real out-of-fold evaluation, M produced 2/31 false-complete decisions and 86/100 correct decisions, compared with 7/31 and 80/100 for B0. The small number of layouts limits the strength of the decision-accuracy comparison. Unknown recall remained poor and the simulated severe darkening and blur exposed sensitivity in M.
 
-The L40 experiments establish the server-side trade-offs for input resolution and language quantization. The final GGUF and application have passed server-side checks, and the deployment package is ready for transfer. Device accuracy, latency, throughput, memory, power and the live demonstration on Jetson Orin Nano 8GB remain pending.
+The L40 experiments establish the server-side trade-offs for input resolution and language quantization. The final GGUF and application have passed server-side checks. On Jetson Orin Nano 8GB, the base-weight deployment stack built and ran, Q4_K_M and Q8_0 fitted in 8 GB, and F16 did not. Board accuracy for M, real-photo evaluation, camera throughput and the live demonstration remain pending.

@@ -1,0 +1,16 @@
+0.00.013.768 I srv  llama_server: initializing ...
+0.00.013.797 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.014.121 W srv  server_setup: security: no API key is set and CORS allows all origins (see https://github.com/ggml-org/llama.cpp/pull/25655)
+0.00.018.007 I srv    load_model: loading model '/home/jetson/qwen_vlm/release/jetson_bundle_base/models/base-f16.gguf'
+0.00.576.446 W load: control-looking token: 128247 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
+0.07.367.515 I cmn          init: llama threadpool init, n_threads = 6
+0.07.372.386 W load_hparams: Qwen-VL models require at minimum 1024 image tokens to function correctly on grounding tasks
+0.07.372.393 W load_hparams: if you encounter problems with accuracy, try adding --image-min-tokens 1024
+0.07.372.394 W load_hparams: more info: https://github.com/ggml-org/llama.cpp/issues/16842
+
+0.17.987.235 I srv    load_model: loaded multimodal model, '/home/jetson/qwen_vlm/release/jetson_bundle_base/models/mmproj-base-f16.gguf'
+0.23.759.035 I srv    load_model: initializing, n_slots = 4, n_ctx_slot = 4096, kv_unified = 'true'
+0.23.888.792 I srv  server_run_i: model loaded
+0.23.889.296 I srv  server_on_li: listening on http://127.0.0.1:8080
+0.28.594.539 I slot       select: id  0 | task -1 | selected slot by LRU, n_tokens = 0, t_last = -1
+0.28.601.518 I slot launch_slot_: id  0 | task 0 | processing task, is_child = 0
