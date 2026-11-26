@@ -1,0 +1,219 @@
+................................................................F....... [ 63%]
+............................F.F...........                               [100%]
+=================================== FAILURES ===================================
+___________ test_eval_predictions_cli_writes_the_hand_counted_rates ____________
+
+    def test_eval_predictions_cli_writes_the_hand_counted_rates():
+        if OUT.exists():
+            shutil.rmtree(OUT)
+        OUT.mkdir(parents=True)
+        try:
+            eval_dir = OUT / "fixture_not_a_result" / "eval"
+>           _run(
+                [
+                    "scripts/eval_predictions.py",
+                    "--gold",
+                    str(FIXTURE / "gold.jsonl"),
+                    "--pred",
+                    str(FIXTURE / "pred.jsonl"),
+                    "--out",
+                    str(eval_dir),
+                    "--experiment-id",
+                    "fixture_not_a_result",
+                    "--bootstrap-iters",
+                    "20",
+                    "--seed",
+                    "0",
+                    "--tegrastats",
+                    str(FIXTURE / "tegrastats_jp6.log"),
+                    "--config",
+                    str(ROOT / "configs" / "infer" / "eval_default.yaml"),
+                ]
+            )
+
+tests/test_eval_report.py:27: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_eval_report.py:18: in _run
+    subprocess.run(command, shell=True, check=True, executable="/bin/bash")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input = None, capture_output = False, timeout = None, check = True
+popenargs = ('cd /home/jetson/qwen_vlm && source env/activate.sh && /home/jetson/qwen_vlm/envs/qwen_vlm/bin/python scripts/eval_pr...etson/qwen_vlm/tests/fixtures/eval/tegrastats_jp6.log --config /home/jetson/qwen_vlm/configs/infer/eval_default.yaml',)
+kwargs = {'shell': True, 'executable': '/bin/bash'}
+
+    def run(*popenargs,
+            input=None, capture_output=False, timeout=None, check=False, **kwargs):
+        """Run command with arguments and return a CompletedProcess instance.
+    
+        The returned instance will have attributes args, returncode, stdout and
+        stderr. By default, stdout and stderr are not captured, and those attributes
+        will be None. Pass stdout=PIPE and/or stderr=PIPE in order to capture them,
+        or pass capture_output=True to capture both.
+    
+        If check is True and the exit code was non-zero, it raises a
+        CalledProcessError. The CalledProcessError object will have the return code
+        in the returncode attribute, and output & stderr attributes if those streams
+        were captured.
+    
+        If timeout is given, and the process takes too long, a TimeoutExpired
+        exception will be raised.
+    
+        There is an optional argument "input", allowing you to
+        pass bytes or a string to the subprocess's stdin.  If you use this argument
+        you may not also use the Popen constructor's "stdin" argument, as
+        it will be used internally.
+    
+        By default, all communication is in bytes, and therefore any "input" should
+        be bytes, and the stdout and stderr will be bytes. If in text mode, any
+        "input" should be a string, and stdout and stderr will be strings decoded
+        according to locale encoding, or by "encoding" if set. Text mode is
+        triggered by setting any of text, encoding, errors or universal_newlines.
+    
+        The other arguments are the same as for the Popen constructor.
+        """
+        if input is not None:
+            if kwargs.get('stdin') is not None:
+                raise ValueError('stdin and input arguments may not both be used.')
+            kwargs['stdin'] = PIPE
+    
+        if capture_output:
+            if kwargs.get('stdout') is not None or kwargs.get('stderr') is not None:
+                raise ValueError('stdout and stderr arguments may not be used '
+                                 'with capture_output.')
+            kwargs['stdout'] = PIPE
+            kwargs['stderr'] = PIPE
+    
+        with Popen(*popenargs, **kwargs) as process:
+            try:
+                stdout, stderr = process.communicate(input, timeout=timeout)
+            except TimeoutExpired as exc:
+                process.kill()
+                if _mswindows:
+                    # Windows accumulates the output in a single blocking
+                    # read() call run on child threads, with the timeout
+                    # being done in a join() on those threads.  communicate()
+                    # _after_ kill() is required to collect that and add it
+                    # to the exception.
+                    exc.stdout, exc.stderr = process.communicate()
+                else:
+                    # POSIX _communicate already populated the output so
+                    # far into the TimeoutExpired exception.
+                    process.wait()
+                raise
+            except:  # Including KeyboardInterrupt, communicate handled that.
+                process.kill()
+                # We don't call process.wait() as .__exit__ does that for us.
+                raise
+            retcode = process.poll()
+            if check and retcode:
+>               raise CalledProcessError(retcode, process.args,
+                                         output=stdout, stderr=stderr)
+E               subprocess.CalledProcessError: Command 'cd /home/jetson/qwen_vlm && source env/activate.sh && /home/jetson/qwen_vlm/envs/qwen_vlm/bin/python scripts/eval_predictions.py --gold /home/jetson/qwen_vlm/tests/fixtures/eval/gold.jsonl --pred /home/jetson/qwen_vlm/tests/fixtures/eval/pred.jsonl --out /home/jetson/qwen_vlm/tests/fixtures/eval/e2e_out/fixture_not_a_result/eval --experiment-id fixture_not_a_result --bootstrap-iters 20 --seed 0 --tegrastats /home/jetson/qwen_vlm/tests/fixtures/eval/tegrastats_jp6.log --config /home/jetson/qwen_vlm/configs/infer/eval_default.yaml' returned non-zero exit status 127.
+
+/usr/lib/python3.10/subprocess.py:526: CalledProcessError
+----------------------------- Captured stderr call -----------------------------
+mkdir: 无法创建目录 "/root": 权限不够
+mkdir: 无法创建目录 "/root": 权限不够
+mkdir: 无法创建目录 "/root": 权限不够
+mkdir: 无法创建目录 "/root": 权限不够
+mkdir: 无法创建目录 "/root": 权限不够
+mkdir: 无法创建目录 "/root": 权限不够
+mkdir: 无法创建目录 "/root": 权限不够
+/bin/bash: 行 1: /home/jetson/qwen_vlm/envs/qwen_vlm/bin/python: 没有那个文件或目录
+______________ test_supervised_tokens_are_exactly_the_target_json ______________
+
+processor = Qwen3VLProcessor:
+- image_processor: Qwen2VLImageProcessorFast {
+  "crop_size": null,
+  "data_format": "channels_first...deo_metadata": null,
+  "video_processor_type": "Qwen3VLVideoProcessor"
+}
+
+
+{
+  "processor_class": "Qwen3VLProcessor"
+}
+
+
+    def test_supervised_tokens_are_exactly_the_target_json(processor):
+        image = Image.new("RGB", (320, 240), (180, 140, 90))
+        pad_id = processor.tokenizer.convert_tokens_to_ids("<|image_pad|>")
+        for sample in (_checklist(), _presence()):
+>           encoded = encode_sample(sample, processor, image, max_pixels=384 * 384, min_pixels=384 * 384)
+
+tests/test_training_labels.py:71: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/qwen_vlm/training/dataset.py:107: in encode_sample
+    prompt_ids = _squeeze_batch(prompt["input_ids"]).to(dtype=torch.long).contiguous()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tensor = [[151644, 8948, 198, 105043, 104800, 108799, ...]]
+
+    def _squeeze_batch(tensor: torch.Tensor) -> torch.Tensor:
+>       if tensor.ndim >= 1 and tensor.shape[0] == 1 and tensor.ndim == 2:
+E       AttributeError: 'list' object has no attribute 'ndim'
+
+src/qwen_vlm/training/dataset.py:72: AttributeError
+----------------------------- Captured stderr call -----------------------------
+Keyword argument `processor_kwargs` is not a valid argument for this processor and will be ignored.
+------------------------------ Captured log call -------------------------------
+WARNING  transformers.processing_utils:logging.py:328 Keyword argument `processor_kwargs` is not a valid argument for this processor and will be ignored.
+___________________ test_collator_keeps_real_supervised_span ___________________
+
+processor = Qwen3VLProcessor:
+- image_processor: Qwen2VLImageProcessorFast {
+  "crop_size": null,
+  "data_format": "channels_first...deo_metadata": null,
+  "video_processor_type": "Qwen3VLVideoProcessor"
+}
+
+
+{
+  "processor_class": "Qwen3VLProcessor"
+}
+
+
+    def test_collator_keeps_real_supervised_span(processor):
+        image = Image.new("RGB", (320, 240), (20, 80, 140))
+>       checklist = encode_sample(_checklist(), processor, image, max_pixels=384 * 384, min_pixels=384 * 384)
+
+tests/test_training_labels.py:120: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/qwen_vlm/training/dataset.py:107: in encode_sample
+    prompt_ids = _squeeze_batch(prompt["input_ids"]).to(dtype=torch.long).contiguous()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tensor = [[151644, 8948, 198, 105043, 104800, 108799, ...]]
+
+    def _squeeze_batch(tensor: torch.Tensor) -> torch.Tensor:
+>       if tensor.ndim >= 1 and tensor.shape[0] == 1 and tensor.ndim == 2:
+E       AttributeError: 'list' object has no attribute 'ndim'
+
+src/qwen_vlm/training/dataset.py:72: AttributeError
+=============================== warnings summary ===============================
+../../../usr/lib/python3/dist-packages/pytest_cov/plugin.py:136
+  /usr/lib/python3/dist-packages/pytest_cov/plugin.py:136: PytestRemovedIn10Warning: The hookimpl pytest_load_initial_conftests uses old-style configuration options (marks or attributes).
+  Please use the pytest.hookimpl(tryfirst=True) decorator instead
+   to configure the hooks.
+   See https://docs.pytest.org/en/latest/deprecations.html#configuring-hook-specs-impls-using-markers
+    @pytest.mark.tryfirst
+
+../../../usr/local/lib/python3.10/dist-packages/tensorflow/__init__.py:30
+  /usr/local/lib/python3.10/dist-packages/tensorflow/__init__.py:30: DeprecationWarning: The distutils package is deprecated and slated for removal in Python 3.12. Use setuptools or check PEP 632 for potential alternatives
+    import distutils as _distutils
+
+../../../usr/local/lib/python3.10/dist-packages/tensorflow/lite/python/util.py:51
+../../../usr/local/lib/python3.10/dist-packages/tensorflow/lite/python/util.py:51
+  /usr/local/lib/python3.10/dist-packages/tensorflow/lite/python/util.py:51: DeprecationWarning: jax.xla_computation is deprecated. Please use the AOT APIs.
+    from jax import xla_computation as _xla_computation
+
+../.local/lib/python3.10/site-packages/matplotlib/projections/__init__.py:63
+  /home/jetson/.local/lib/python3.10/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+    warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_eval_report.py::test_eval_predictions_cli_writes_the_hand_counted_rates
+FAILED tests/test_training_labels.py::test_supervised_tokens_are_exactly_the_target_json
+FAILED tests/test_training_labels.py::test_collator_keeps_real_supervised_span
+3 failed, 111 passed, 5 warnings in 31.45s

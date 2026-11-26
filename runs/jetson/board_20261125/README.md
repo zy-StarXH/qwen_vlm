@@ -3,6 +3,9 @@
 This directory is the evidence for the board-side deployment work. It was produced on the
 device itself (`/home/jetson/qwen_vlm`), not on the L40 server.
 
+> This is the **base-weight reference** run. The final fine-tuned M was restored later and
+> measured in `../final_20261126/`; use that directory for the final-model numbers.
+
 ## What was run
 
 | Step | Command | Result |
@@ -84,11 +87,11 @@ device, so the OpenCV/browser-camera paths and camera FPS were not tested.
 
 No source files were changed for the board run.
 
-## Missing for the full course deliverable
+## Remaining for the full course deliverable
 
-1. `runs/M_final/adapter/` or `release/jetson_bundle_final/` — restore from the cloud backup,
-   then rerun `02`–`04` with `MODEL_TAG=final`.
-2. `data/raw/session_001/` — restore the 50 real photos, then run `predict_llamacpp.py` on the
-   board and evaluate the returned JSONL. For the final model these photos are training data;
-   the result is a deployment check, not a generalization metric.
-3. A USB camera — `/dev/video*` is absent; camera FPS and the recorded demo are still pending.
+1. A USB camera — `/dev/video*` is absent; camera FPS and the recorded demo are still pending.
+
+Completed on 2026-11-26: the final adapter and Q4 bundle were restored to the board and the
+50 real photographs were evaluated as a deployment check (77/100 decisions, 2/31
+false-complete); see `../final_20261126/`. The final Q8_0/F16 GGUFs remain unuploaded; the
+F16 OOM evidence here comes from the base weights.

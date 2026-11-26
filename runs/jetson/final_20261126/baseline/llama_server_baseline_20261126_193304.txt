@@ -1,0 +1,23 @@
+0.00.034.405 I srv  llama_server: initializing ...
+0.00.034.443 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.037.833 W srv  server_setup: security: no API key is set and CORS allows all origins (see https://github.com/ggml-org/llama.cpp/pull/25655)
+0.00.042.864 I srv    load_model: loading model '/home/jetson/qwen_vlm/release/jetson_bundle_final/models/final-q4_k_m.gguf'
+0.01.382.626 W load: control-looking token: 128247 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
+0.05.287.691 I cmn          init: llama threadpool init, n_threads = 6
+0.05.293.770 W load_hparams: Qwen-VL models require at minimum 1024 image tokens to function correctly on grounding tasks
+0.05.293.776 W load_hparams: if you encounter problems with accuracy, try adding --image-min-tokens 1024
+0.05.293.777 W load_hparams: more info: https://github.com/ggml-org/llama.cpp/issues/16842
+
+0.07.425.722 I srv    load_model: loaded multimodal model, '/home/jetson/qwen_vlm/release/jetson_bundle_final/models/mmproj-final-f16.gguf'
+0.07.677.764 I srv    load_model: initializing, n_slots = 4, n_ctx_slot = 4096, kv_unified = 'true'
+0.07.703.480 I srv  server_run_i: model loaded
+0.07.703.500 I srv  server_on_li: listening on http://127.0.0.1:8080
+0.10.345.779 I slot       select: id  0 | task -1 | selected slot by LRU, n_tokens = 0, t_last = -1
+0.10.346.387 I slot launch_slot_: id  0 | task 0 | processing task, is_child = 0
+0.12.554.311 I slot print_timing: id  0 | task 0 | prompt eval time =    1093.31 ms /   507 tokens (    2.16 ms per token,   463.73 tokens per second)
+0.12.554.329 I slot print_timing: id  0 | task 0 |        eval time =    1114.51 ms /    40 tokens (   28.58 ms per token,    34.99 tokens per second)
+0.12.554.333 I slot print_timing: id  0 | task 0 |       total time =    2207.82 ms /   547 tokens
+0.12.554.344 I slot print_timing: id  0 | task 0 |    graphs reused =         37
+0.12.554.347 I slot print_timing: id  0 | task 0 |   graph reallocs =          1    /     0        (same size) / (changed size)
+0.12.582.219 I slot      release: id  0 | task 0 | stop processing: n_tokens = 546, truncated = 0
+0.12.667.726 I srv    operator(): operator(): cleaning up before exit...

@@ -91,12 +91,20 @@ PYTHONPATH=src .venv/bin/python scripts/predict_llamacpp.py \
 - `python3 -m venv` 失败：系统没有 `ensurepip` / `python3-venv`。这需要管理员装一次，脚本不会装。
 - 改了网页上的像素档但没重启 llama-server：视觉 token 上限是服务启动参数。`04_app.sh` 的 `PIXELS` 必须和当时启动的服务一致。
 
-## 5. 2026-11-25 板端实测记录
+## 5. 2026-11-25 与 2026-11-26 板端实测记录
 
 - 设备：Jetson Orin Nano 8GB Engineering Reference Developer Kit Super，L4T R36.4.3，CUDA 12.6.11，`MAXN_SUPER`。
 - `00`–`02` PASS：llama.cpp b12425 以 CUDA sm_87 构建；Q4_K_M 512² 冷启动端到端 2.68 s。
 - `03`：Q4_K_M/Q8_0 × 384²/512²/768² 共 6 档，每档 5 次预热 + 100 次正式请求，全部解析；F16 被 OOM killer 终止。
 - `04`：Gradio 已保存图片模式经 `/infer` 接口验证三张冒烟图；本机无 `/dev/video*`，摄像头链路未测。
-- 本机 clone 没有服务器上的 `release/` 和最终 adapter，因此用 ModelScope 官方 `Qwen3VL-2B-Instruct-F16.gguf`（SHA256 `27b80f2e…2595`）重建原始权重 bundle，再在板上用 b12425 的 `llama-quantize` 转 Q8_0/Q4_K_M。来源、哈希和命令见 `runs/jetson/board_20261125/`。
+- 2026-11-25 时本机 clone 还没有服务器上的 `release/` 和最终 adapter，因此用 ModelScope 官方 `Qwen3VL-2B-Instruct-F16.gguf`（SHA256 `27b80f2e…2595`）重建原始权重 bundle，再在板上用 b12425 的 `llama-quantize` 转 Q8_0/Q4_K_M。来源、哈希和命令见 `runs/jetson/board_20261125/`。
 - 注意 `03` 的三张图循环使用：100 次正式请求会命中 llama-server 的 prompt cache，prefill 约 0.03 s；每张图第一次出现（前 3 次预热）才是冷 prefill。报告时应同时给出冷启动与稳态两个数。
 - F16 的实际结论：语言权重 3.21 GiB 加 mmproj 0.76 GiB，在 8 GB 统一内存上被 OOM killer 终止；板端高精度参照用 Q8_0。
+
+### 2026-11-26 最终 M
+
+- `final-q4_k_m.gguf`、`mmproj-final-f16.gguf` 和 `models/adapter/` 从服务器上传后与 `runs/M_final/bundle_SHA256SUMS` 逐字节一致；`session_001.zip` 的 50 张照片覆盖全部 `real_v1.jsonl` 路径。
+- 最终 M Q4_K_M 三档计时：冷启动 p50/p95 1.68/2.12、1.86/2.29、2.53/2.80 s（384²/512²/768²）；稳态 p50 1.21–1.29 s；37.9–38.9 token/s。
+- 真实照片（100 条 checklist，训练集）：决策 77/100、误报齐全 2/31、unknown 召回 16/18，与 L40 一致；端到端 p50/p95 3.01/3.39 s。**这是部署检查，不是泛化指标。**
+- `04` 的 v001/v014/v040/v041 决策与 L40 一致。
+- 最终 Q8_0/F16 未上传；F16 在 8 GB 上已知 OOM。证据：`runs/jetson/final_20261126/`。

@@ -1,0 +1,864 @@
+{
+  "date": "2026-11-26",
+  "device": "Jetson Orin Nano 8GB Engineering Reference Developer Kit Super",
+  "l4t": "R36.4.3",
+  "cuda": "12.6.11",
+  "power_mode": "MAXN_SUPER",
+  "llamacpp": "b12425 / 18b74fa41dcac1f55ae1371fe58153f7225941f6",
+  "model": "M final (LoRA merged), Q4_K_M language + F16 mmproj",
+  "model_files": {
+    "final-q4_k_m.gguf": {
+      "bytes": 1107410048,
+      "sha256": "ebbb2b33e2b607a52f9a84d65035f9e44b8b8601c5a00a36c58ef09546a52cbc"
+    },
+    "mmproj-final-f16.gguf": {
+      "bytes": 819394784,
+      "sha256": "96671dad15b78c2a36e5280440997dc5f4c4a0f88ad7894d6934ae0dff0174d3"
+    },
+    "adapter/adapter_model.safetensors": {
+      "bytes": 69788264,
+      "sha256": "db07fc409f567674e79c5563adcd15c66eae6c6343d02fe285a8dfdf30e4368a"
+    }
+  },
+  "bench": [
+    {
+      "pixels": 384,
+      "image_max_tokens": 144,
+      "n_measured": 100,
+      "n_parsed": 100,
+      "n_errors": 0,
+      "cold_total_s": {
+        "n": 3,
+        "mean": 1.817,
+        "p50": 1.68,
+        "p95": 2.121,
+        "min": 1.65,
+        "max": 2.121
+      },
+      "cold_prefill_s": {
+        "n": 3,
+        "mean": 0.534,
+        "p50": 0.398,
+        "p95": 0.831,
+        "min": 0.374,
+        "max": 0.831
+      },
+      "steady_total_s": {
+        "n": 100,
+        "mean": 1.21,
+        "p50": 1.208,
+        "p95": 1.242,
+        "min": 1.181,
+        "max": 1.282
+      },
+      "steady_prefill_s": {
+        "n": 100,
+        "mean": 0.027,
+        "p50": 0.027,
+        "p95": 0.028,
+        "min": 0.027,
+        "max": 0.031
+      },
+      "tokens_per_s": 38.88,
+      "requests_per_s": 0.8266,
+      "tegrastats": {
+        "n": 261,
+        "status": "ok",
+        "ram_used_mb": {
+          "n": 261,
+          "mean": 7165.800766283525,
+          "peak": 7270.0
+        },
+        "ram_total_mb": {
+          "n": 261,
+          "mean": 7620.0,
+          "peak": 7620.0
+        },
+        "swap_used_mb": {
+          "n": 261,
+          "mean": 2981.360153256705,
+          "peak": 3018.0
+        },
+        "gr3d_freq_pct": {
+          "n": 261,
+          "mean": 79.9463601532567,
+          "peak": 99.0
+        },
+        "emc_freq_pct": {
+          "n": 0,
+          "mean": null,
+          "peak": null
+        },
+        "cpu_util_pct": {
+          "n": 1566,
+          "mean": 8.38441890166028,
+          "peak": 100.0
+        },
+        "temperatures_c": {
+          "cpu": {
+            "n": 261,
+            "mean": 58.60232950191585,
+            "peak": 66.187
+          },
+          "gpu": {
+            "n": 261,
+            "mean": 60.22811111111126,
+            "peak": 67.781
+          },
+          "soc0": {
+            "n": 261,
+            "mean": 58.053980842912,
+            "peak": 65.281
+          },
+          "soc1": {
+            "n": 261,
+            "mean": 57.67394252873579,
+            "peak": 64.875
+          },
+          "soc2": {
+            "n": 261,
+            "mean": 57.95519923371661,
+            "peak": 65.093
+          },
+          "tj": {
+            "n": 261,
+            "mean": 60.23840229885073,
+            "peak": 67.781
+          }
+        },
+        "power_mw": {
+          "VDD_CPU_GPU_CV": {
+            "instant_mw": {
+              "n": 261,
+              "mean": 7698.613026819923,
+              "peak": 9096.0
+            },
+            "average_mw": {
+              "n": 261,
+              "mean": 6765.75478927203,
+              "peak": 7551.0
+            }
+          },
+          "VDD_IN": {
+            "instant_mw": {
+              "n": 261,
+              "mean": 17563.873563218393,
+              "peak": 19380.0
+            },
+            "average_mw": {
+              "n": 261,
+              "mean": 15851.842911877395,
+              "peak": 17295.0
+            }
+          },
+          "VDD_SOC": {
+            "instant_mw": {
+              "n": 261,
+              "mean": 4432.318007662835,
+              "peak": 4786.0
+            },
+            "average_mw": {
+              "n": 261,
+              "mean": 3981.5785440613026,
+              "peak": 4359.0
+            }
+          }
+        }
+      }
+    },
+    {
+      "pixels": 512,
+      "image_max_tokens": 256,
+      "n_measured": 100,
+      "n_parsed": 100,
+      "n_errors": 0,
+      "cold_total_s": {
+        "n": 3,
+        "mean": 1.987,
+        "p50": 1.862,
+        "p95": 2.288,
+        "min": 1.811,
+        "max": 2.288
+      },
+      "cold_prefill_s": {
+        "n": 3,
+        "mean": 0.685,
+        "p50": 0.553,
+        "p95": 0.979,
+        "min": 0.522,
+        "max": 0.979
+      },
+      "steady_total_s": {
+        "n": 100,
+        "mean": 1.256,
+        "p50": 1.255,
+        "p95": 1.276,
+        "min": 1.222,
+        "max": 1.279
+      },
+      "steady_prefill_s": {
+        "n": 100,
+        "mean": 0.031,
+        "p50": 0.031,
+        "p95": 0.032,
+        "min": 0.03,
+        "max": 0.034
+      },
+      "tokens_per_s": 38.25,
+      "requests_per_s": 0.7964,
+      "tegrastats": {
+        "n": 271,
+        "status": "ok",
+        "ram_used_mb": {
+          "n": 271,
+          "mean": 7079.8081180811805,
+          "peak": 7221.0
+        },
+        "ram_total_mb": {
+          "n": 271,
+          "mean": 7620.0,
+          "peak": 7620.0
+        },
+        "swap_used_mb": {
+          "n": 271,
+          "mean": 3121.0147601476015,
+          "peak": 3141.0
+        },
+        "gr3d_freq_pct": {
+          "n": 271,
+          "mean": 77.54981549815498,
+          "peak": 99.0
+        },
+        "emc_freq_pct": {
+          "n": 0,
+          "mean": null,
+          "peak": null
+        },
+        "cpu_util_pct": {
+          "n": 1626,
+          "mean": 8.10270602706027,
+          "peak": 80.0
+        },
+        "temperatures_c": {
+          "cpu": {
+            "n": 271,
+            "mean": 68.6240553505537,
+            "peak": 71.531
+          },
+          "gpu": {
+            "n": 271,
+            "mean": 70.13233948339501,
+            "peak": 73.25
+          },
+          "soc0": {
+            "n": 271,
+            "mean": 68.07391512915143,
+            "peak": 70.875
+          },
+          "soc1": {
+            "n": 271,
+            "mean": 67.81108856088576,
+            "peak": 70.562
+          },
+          "soc2": {
+            "n": 271,
+            "mean": 67.95257564575668,
+            "peak": 70.718
+          },
+          "tj": {
+            "n": 271,
+            "mean": 70.13740959409613,
+            "peak": 73.25
+          }
+        },
+        "power_mw": {
+          "VDD_CPU_GPU_CV": {
+            "instant_mw": {
+              "n": 271,
+              "mean": 7668.675276752768,
+              "peak": 8652.0
+            },
+            "average_mw": {
+              "n": 271,
+              "mean": 7406.431734317343,
+              "peak": 7518.0
+            }
+          },
+          "VDD_IN": {
+            "instant_mw": {
+              "n": 271,
+              "mean": 17596.863468634685,
+              "peak": 19302.0
+            },
+            "average_mw": {
+              "n": 271,
+              "mean": 17057.78228782288,
+              "peak": 17283.0
+            }
+          },
+          "VDD_SOC": {
+            "instant_mw": {
+              "n": 271,
+              "mean": 4482.321033210332,
+              "peak": 4817.0
+            },
+            "average_mw": {
+              "n": 271,
+              "mean": 4308.8154981549815,
+              "peak": 4379.0
+            }
+          }
+        }
+      }
+    },
+    {
+      "pixels": 768,
+      "image_max_tokens": 576,
+      "n_measured": 100,
+      "n_parsed": 100,
+      "n_errors": 0,
+      "cold_total_s": {
+        "n": 3,
+        "mean": 2.614,
+        "p50": 2.534,
+        "p95": 2.804,
+        "min": 2.504,
+        "max": 2.804
+      },
+      "cold_prefill_s": {
+        "n": 3,
+        "mean": 1.306,
+        "p50": 1.188,
+        "p95": 1.546,
+        "min": 1.184,
+        "max": 1.546
+      },
+      "steady_total_s": {
+        "n": 100,
+        "mean": 1.297,
+        "p50": 1.292,
+        "p95": 1.327,
+        "min": 1.264,
+        "max": 1.401
+      },
+      "steady_prefill_s": {
+        "n": 100,
+        "mean": 0.028,
+        "p50": 0.028,
+        "p95": 0.031,
+        "min": 0.027,
+        "max": 0.033
+      },
+      "tokens_per_s": 37.85,
+      "requests_per_s": 0.7711,
+      "tegrastats": {
+        "n": 280,
+        "status": "ok",
+        "ram_used_mb": {
+          "n": 280,
+          "mean": 7169.607142857143,
+          "peak": 7311.0
+        },
+        "ram_total_mb": {
+          "n": 280,
+          "mean": 7620.0,
+          "peak": 7620.0
+        },
+        "swap_used_mb": {
+          "n": 280,
+          "mean": 3422.875,
+          "peak": 3479.0
+        },
+        "gr3d_freq_pct": {
+          "n": 280,
+          "mean": 80.15357142857142,
+          "peak": 99.0
+        },
+        "emc_freq_pct": {
+          "n": 0,
+          "mean": null,
+          "peak": null
+        },
+        "cpu_util_pct": {
+          "n": 1680,
+          "mean": 8.678571428571429,
+          "peak": 92.0
+        },
+        "temperatures_c": {
+          "cpu": {
+            "n": 280,
+            "mean": 71.57126785714307,
+            "peak": 72.5
+          },
+          "gpu": {
+            "n": 280,
+            "mean": 73.09169642857161,
+            "peak": 74.156
+          },
+          "soc0": {
+            "n": 280,
+            "mean": 70.97025000000022,
+            "peak": 71.562
+          },
+          "soc1": {
+            "n": 280,
+            "mean": 70.81066071428592,
+            "peak": 71.437
+          },
+          "soc2": {
+            "n": 280,
+            "mean": 70.9028571428573,
+            "peak": 71.562
+          },
+          "tj": {
+            "n": 280,
+            "mean": 73.09426071428591,
+            "peak": 74.156
+          }
+        },
+        "power_mw": {
+          "VDD_CPU_GPU_CV": {
+            "instant_mw": {
+              "n": 280,
+              "mean": 7703.371428571429,
+              "peak": 9105.0
+            },
+            "average_mw": {
+              "n": 280,
+              "mean": 7458.232142857143,
+              "peak": 7517.0
+            }
+          },
+          "VDD_IN": {
+            "instant_mw": {
+              "n": 280,
+              "mean": 17760.7,
+              "peak": 19897.0
+            },
+            "average_mw": {
+              "n": 280,
+              "mean": 17199.342857142856,
+              "peak": 17331.0
+            }
+          },
+          "VDD_SOC": {
+            "instant_mw": {
+              "n": 280,
+              "mean": 4559.232142857143,
+              "peak": 4927.0
+            },
+            "average_mw": {
+              "n": 280,
+              "mean": 4366.742857142857,
+              "peak": 4411.0
+            }
+          }
+        }
+      }
+    }
+  ],
+  "real_photo_deployment_check": {
+    "purpose": "deployment/export check on the 50 training photographs; NOT a generalization metric",
+    "n_checklist": 100,
+    "board": {
+      "decision_accuracy": {
+        "value": 0.77,
+        "numerator": 77,
+        "denominator": 100,
+        "n_samples": 100
+      },
+      "false_complete": {
+        "value": 0.06451612903225806,
+        "numerator": 2,
+        "denominator": 31,
+        "n_samples": 100
+      },
+      "unknown_recall": {
+        "value": 0.8888888888888888,
+        "numerator": 16,
+        "denominator": 18,
+        "n_samples": 100
+      },
+      "state_accuracy": {
+        "value": 0.892,
+        "numerator": 446,
+        "denominator": 500,
+        "n_samples": 100
+      },
+      "macro_f1": {
+        "value": 0.6884624496564795,
+        "numerator": 3,
+        "denominator": 3,
+        "n_classes": 3,
+        "n_classes_defined": 3,
+        "aggregation": "arithmetic_mean_of_defined_class_f1",
+        "per_class": {
+          "present": {
+            "tp": 390,
+            "fp": 2,
+            "fn": 22,
+            "precision": {
+              "value": 0.9948979591836735,
+              "numerator": 390,
+              "denominator": 392
+            },
+            "recall": {
+              "value": 0.9466019417475728,
+              "numerator": 390,
+              "denominator": 412
+            },
+            "f1": {
+              "value": 0.9701492537313433,
+              "numerator": 780,
+              "denominator": 804
+            }
+          },
+          "absent": {
+            "tp": 40,
+            "fp": 2,
+            "fn": 30,
+            "precision": {
+              "value": 0.9523809523809523,
+              "numerator": 40,
+              "denominator": 42
+            },
+            "recall": {
+              "value": 0.5714285714285714,
+              "numerator": 40,
+              "denominator": 70
+            },
+            "f1": {
+              "value": 0.7142857142857143,
+              "numerator": 80,
+              "denominator": 112
+            }
+          },
+          "unknown": {
+            "tp": 16,
+            "fp": 50,
+            "fn": 2,
+            "precision": {
+              "value": 0.24242424242424243,
+              "numerator": 16,
+              "denominator": 66
+            },
+            "recall": {
+              "value": 0.8888888888888888,
+              "numerator": 16,
+              "denominator": 18
+            },
+            "f1": {
+              "value": 0.38095238095238093,
+              "numerator": 32,
+              "denominator": 84
+            }
+          }
+        }
+      },
+      "json_valid": {
+        "value": 1.0,
+        "numerator": 100,
+        "denominator": 100,
+        "n_samples": 100
+      }
+    },
+    "server_l40": {
+      "decision_accuracy": {
+        "value": 0.77,
+        "numerator": 77,
+        "denominator": 100,
+        "n_samples": 100
+      },
+      "false_complete": {
+        "value": 0.06451612903225806,
+        "numerator": 2,
+        "denominator": 31,
+        "n_samples": 100
+      },
+      "unknown_recall": {
+        "value": 0.8888888888888888,
+        "numerator": 16,
+        "denominator": 18,
+        "n_samples": 100
+      },
+      "state_accuracy": {
+        "value": 0.878,
+        "numerator": 439,
+        "denominator": 500,
+        "n_samples": 100
+      },
+      "macro_f1": {
+        "value": 0.6774229405808353,
+        "numerator": 3,
+        "denominator": 3,
+        "n_classes": 3,
+        "n_classes_defined": 3,
+        "aggregation": "arithmetic_mean_of_defined_class_f1",
+        "per_class": {
+          "present": {
+            "tp": 383,
+            "fp": 3,
+            "fn": 29,
+            "precision": {
+              "value": 0.9922279792746114,
+              "numerator": 383,
+              "denominator": 386
+            },
+            "recall": {
+              "value": 0.9296116504854369,
+              "numerator": 383,
+              "denominator": 412
+            },
+            "f1": {
+              "value": 0.9598997493734336,
+              "numerator": 766,
+              "denominator": 798
+            }
+          },
+          "absent": {
+            "tp": 40,
+            "fp": 1,
+            "fn": 30,
+            "precision": {
+              "value": 0.975609756097561,
+              "numerator": 40,
+              "denominator": 41
+            },
+            "recall": {
+              "value": 0.5714285714285714,
+              "numerator": 40,
+              "denominator": 70
+            },
+            "f1": {
+              "value": 0.7207207207207207,
+              "numerator": 80,
+              "denominator": 111
+            }
+          },
+          "unknown": {
+            "tp": 16,
+            "fp": 57,
+            "fn": 2,
+            "precision": {
+              "value": 0.2191780821917808,
+              "numerator": 16,
+              "denominator": 73
+            },
+            "recall": {
+              "value": 0.8888888888888888,
+              "numerator": 16,
+              "denominator": 18
+            },
+            "f1": {
+              "value": 0.3516483516483517,
+              "numerator": 32,
+              "denominator": 91
+            }
+          }
+        }
+      },
+      "json_valid": {
+        "value": 1.0,
+        "numerator": 100,
+        "denominator": 100,
+        "n_samples": 100
+      }
+    },
+    "board_vs_server_parsed_state_agreement": "91/100",
+    "board_vs_server_raw_text_agreement": "91/100",
+    "board_vs_server_decision_agreement": "96/100",
+    "latency": {
+      "warmup_excluded": 0,
+      "n_records_after_warmup": 100,
+      "n_missing_total_s": 0,
+      "total_s": {
+        "n": 100,
+        "mean": 2.9862718970799778,
+        "p50": 3.008946608500082,
+        "p95": 3.3850560272997883
+      },
+      "first_token_s": {
+        "n": 100,
+        "mean": 0.40593517999999995,
+        "p50": 0.3996165,
+        "p95": 0.67674395
+      },
+      "generate_s": {
+        "n": 100,
+        "mean": 1.1137613400000002,
+        "p50": 1.1145304999999999,
+        "p95": 1.1642447999999999
+      },
+      "unit": "s"
+    },
+    "throughput": {
+      "warmup_excluded": 0,
+      "checklist_requests_per_s": {
+        "value": 0.3348656902199077,
+        "numerator": 100,
+        "denominator_s": 298.6271897079978,
+        "unit": "request/s",
+        "n_missing_total_s": 0
+      },
+      "generated_tokens_per_s": {
+        "value": 36.29143744565599,
+        "numerator": 4042,
+        "denominator_s": 111.37613400000004,
+        "numerator_tokens": 4042,
+        "unit": "token/s",
+        "n_records": 100,
+        "n_skipped": 0
+      },
+      "camera_fps": {
+        "value": null,
+        "status": "未测"
+      },
+      "note": "点检请求数/秒和生成 token/s 单位不同，不能合并成 FPS。token/s 的分母是最后一次生成耗时，不是 total_s。"
+    },
+    "resources": {
+      "n": 596,
+      "status": "ok",
+      "ram_used_mb": {
+        "n": 596,
+        "mean": 7319.291946308725,
+        "peak": 7431.0
+      },
+      "ram_total_mb": {
+        "n": 596,
+        "mean": 7620.0,
+        "peak": 7620.0
+      },
+      "swap_used_mb": {
+        "n": 596,
+        "mean": 4731.4010067114095,
+        "peak": 6207.0
+      },
+      "gr3d_freq_pct": {
+        "n": 596,
+        "mean": 48.29697986577181,
+        "peak": 99.0
+      },
+      "emc_freq_pct": {
+        "n": 0,
+        "mean": null,
+        "peak": null
+      },
+      "cpu_util_pct": {
+        "n": 3576,
+        "mean": 15.240492170022371,
+        "peak": 100.0
+      },
+      "temperatures_c": {
+        "cpu": {
+          "n": 596,
+          "mean": 60.88552852349023,
+          "peak": 63.093
+        },
+        "gpu": {
+          "n": 596,
+          "mean": 61.555610738255325,
+          "peak": 64.531
+        },
+        "soc0": {
+          "n": 596,
+          "mean": 60.64160234899359,
+          "peak": 62.125
+        },
+        "soc1": {
+          "n": 596,
+          "mean": 60.461253355704926,
+          "peak": 61.937
+        },
+        "soc2": {
+          "n": 596,
+          "mean": 60.138840604027074,
+          "peak": 61.906
+        },
+        "tj": {
+          "n": 596,
+          "mean": 61.65507550335599,
+          "peak": 64.531
+        }
+      },
+      "power_mw": {
+        "VDD_CPU_GPU_CV": {
+          "instant_mw": {
+            "n": 596,
+            "mean": 4839.412751677853,
+            "peak": 8901.0
+          },
+          "average_mw": {
+            "n": 596,
+            "mean": 4595.528523489933,
+            "peak": 4841.0
+          }
+        },
+        "VDD_IN": {
+          "instant_mw": {
+            "n": 596,
+            "mean": 12060.736577181207,
+            "peak": 18949.0
+          },
+          "average_mw": {
+            "n": 596,
+            "mean": 11656.18288590604,
+            "peak": 12062.0
+          }
+        },
+        "VDD_SOC": {
+          "instant_mw": {
+            "n": 596,
+            "mean": 2890.9261744966443,
+            "peak": 4550.0
+          },
+          "average_mw": {
+            "n": 596,
+            "mean": 2803.796979865772,
+            "peak": 2896.0
+          }
+        }
+      },
+      "n_lines_parsed": 596
+    }
+  },
+  "demo": [
+    {
+      "photo": "v001",
+      "board_decision": "unknown",
+      "server_decision": "unknown",
+      "board_infer_s": 3.566,
+      "server_infer_s": 1.267,
+      "board_missing": "（清单内没有缺失项）；无法确认：线缆"
+    },
+    {
+      "photo": "v014",
+      "board_decision": "incomplete",
+      "server_decision": "incomplete",
+      "board_infer_s": 3.271,
+      "server_infer_s": 1.183,
+      "board_missing": "万用表"
+    },
+    {
+      "photo": "v040",
+      "board_decision": "complete",
+      "server_decision": "complete",
+      "board_infer_s": 3.157,
+      "server_infer_s": 1.214,
+      "board_missing": "（清单内没有缺失项）"
+    },
+    {
+      "photo": "v041",
+      "board_decision": "unknown",
+      "server_decision": "unknown",
+      "board_infer_s": 3.433,
+      "server_infer_s": 1.189,
+      "board_missing": "（清单内没有缺失项）；无法确认：螺丝刀"
+    }
+  ],
+  "notes": [
+    "Bench inputs are the three synthetic smoke images; only timing/resources are used.",
+    "Real-photo metrics use photographs that were part of final training; they verify deployment, not generalization.",
+    "The held-out three-fold result (86/100, 2/31, 1/18) remains the generalization evidence.",
+    "Final Q8_0/F16 GGUFs were not uploaded; only the verified Q4_K_M bundle is available."
+  ]
+}

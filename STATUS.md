@@ -1,6 +1,6 @@
 # 项目状态
 
-更新于 2026-11-25。服务器第 1–5 步完成。Jetson Orin Nano 8GB 已用本机重建的原始权重 bundle 完成 00–04：llama.cpp b12425 构建通过，Q4_K_M/Q8_0 各完成 3 档像素扫描（共 6 档），F16 在 8 GB 上被 OOM killer 终止；04 的已保存图片模式已验证。最终微调 adapter、真实照片板端评测、摄像头与录像仍缺。板端证据见 `runs/jetson/board_20261125/`，复现见 [本轮计划](docs/NEXT_STEPS.md)。
+更新于 2026-11-26。服务器第 1–5 步完成。最终 Q4_K_M bundle 与 LoRA adapter 已从云端恢复到 Jetson，逐字节对照 `runs/M_final/bundle_SHA256SUMS` 通过；板端完成最终 M 的 Q4 三档计时、50 张真实照片部署检查和四张演示图。原始权重 Q4/Q8 三档扫描与 F16 OOM 记录保留在 `runs/jetson/board_20261125/`；最终 M 证据见 `runs/jetson/final_20261126/`。最终 Q8_0/F16 未上传，摄像头与录像仍缺。
 
 | 阶段 | 内容 | 状态 | 证据 |
 | --- | --- | --- | --- |
@@ -19,7 +19,7 @@
 | P3 | 鲁棒性条件 | 27/27 组已复核 | B0、B1、M 各 9 档，每档 100 条。汇总见 `EXPERIMENTS.md`，产物见 `runs/robust/` |
 | P3 | 评测代码（全部任务指标、bootstrap、出表） | 已验证（手算单测） | `src/qwen_vlm/evaluation/`，`tests/test_metrics.py` |
 | P4 | 最终 M、合并与导出 | 已验证 | 全量 500 条训练 50 步，合并一致，Q4/Q8 各 100 条导出检查，部署包 91 项 SHA256 校验通过。见 `runs/M_final/` |
-| P4 | 量化与像素档的板端实测 | Q4/Q8 原始权重已验证；F16 OOM；最终 M 板端待测 | 6 个配置各 100 次请求全部解析。Q4 稳态 p50 1.62–1.71 s；F16 语言权重被 OOM killer 终止。见 `runs/jetson/board_20261125/summary.md` |
-| P5 | 最终 Q4_K_M 图片模式 | 服务器已验证；板端原始权重已验证 | 服务器四类样例见 `runs/M_final/demo/image_mode_check.json`；板端三张冒烟图经 Gradio `/infer` 全部解析，见 `runs/jetson/board_20261125/demo/image_mode_check.json` |
+| P4 | 量化与像素档的板端实测 | 最终 M Q4 已验证；Q8/F16 未上传，F16 原始权重 OOM | 最终 Q4 三档各 100 次请求全部解析，稳态 p50 1.21–1.29 s；真实照片 100 条 p50 3.01 s。见 `runs/jetson/final_20261126/summary.md`。原始权重 Q4/Q8 参考见 `runs/jetson/board_20261125/` |
+| P5 | 最终 Q4_K_M 图片模式 | 服务器与板端均已验证 | 服务器四类样例见 `runs/M_final/demo/image_mode_check.json`；板端 v001/v014/v040/v041 经 Gradio `/infer` 决策与服务器一致，见 `runs/jetson/final_20261126/demo/image_mode_check.json` |
 | P5 | 摄像头、现场演示与视频录制 | 无摄像头设备，待测、待录 | `/dev/video*` 不存在；`deploy/jetson/04_app.sh` 的图片模式已跑通 |
 | P6 | 英文报告、中文逐段校对版、演示脚本、答辩提纲 | 完成 | `reports/technical_report.md`、`reports/technical_report.zh.md`、`reports/demo_script.md`、`reports/defense_outline.md` |

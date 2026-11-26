@@ -1,0 +1,8 @@
+LOG_FILE=/home/jetson/qwen_vlm/release/jetson_bundle_base/logs/02_run_baseline_20261126_193304.txt
+开始时间 2026-11-26T19:33:04+08:00
+启动 llama-server 像素档=512 image-max-tokens=256 端口=8080
+llama-server 健康检查通过
+写出 /home/jetson/qwen_vlm/release/jetson_bundle_base/logs/baseline_512_20261126_193313.jsonl
+原始输出：/home/jetson/qwen_vlm/release/jetson_bundle_base/logs/baseline_512_20261126_193313.jsonl
+服务日志：/home/jetson/qwen_vlm/release/jetson_bundle_base/logs/llama_server_baseline_20261126_193304.txt
+RESULT: PASS

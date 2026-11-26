@@ -1,0 +1,3055 @@
+{
+  "experiment_id": "jetson_final_q4_512",
+  "quantization": "Q4_K_M",
+  "pixel_budget": 512,
+  "n_records": 100,
+  "n_checklist": 100,
+  "n_presence": 0,
+  "n_untagged": 84,
+  "n_missing_predictions": 0,
+  "checklist": {
+    "n_samples": 100,
+    "state_accuracy": {
+      "overall": {
+        "value": 0.892,
+        "numerator": 446,
+        "denominator": 500,
+        "n_samples": 100
+      },
+      "per_category": {
+        "screwdriver": {
+          "value": 0.86,
+          "numerator": 86,
+          "denominator": 100,
+          "n_samples": 100
+        },
+        "pliers": {
+          "value": 0.87,
+          "numerator": 87,
+          "denominator": 100,
+          "n_samples": 100
+        },
+        "cable_bundle": {
+          "value": 0.88,
+          "numerator": 88,
+          "denominator": 100,
+          "n_samples": 100
+        },
+        "multimeter": {
+          "value": 0.98,
+          "numerator": 98,
+          "denominator": 100,
+          "n_samples": 100
+        },
+        "hammer": {
+          "value": 0.87,
+          "numerator": 87,
+          "denominator": 100,
+          "n_samples": 100
+        }
+      }
+    },
+    "macro_f1": {
+      "value": 0.6884624496564795,
+      "numerator": 3,
+      "denominator": 3,
+      "n_classes": 3,
+      "n_classes_defined": 3,
+      "aggregation": "arithmetic_mean_of_defined_class_f1",
+      "per_class": {
+        "present": {
+          "tp": 390,
+          "fp": 2,
+          "fn": 22,
+          "precision": {
+            "value": 0.9948979591836735,
+            "numerator": 390,
+            "denominator": 392
+          },
+          "recall": {
+            "value": 0.9466019417475728,
+            "numerator": 390,
+            "denominator": 412
+          },
+          "f1": {
+            "value": 0.9701492537313433,
+            "numerator": 780,
+            "denominator": 804
+          }
+        },
+        "absent": {
+          "tp": 40,
+          "fp": 2,
+          "fn": 30,
+          "precision": {
+            "value": 0.9523809523809523,
+            "numerator": 40,
+            "denominator": 42
+          },
+          "recall": {
+            "value": 0.5714285714285714,
+            "numerator": 40,
+            "denominator": 70
+          },
+          "f1": {
+            "value": 0.7142857142857143,
+            "numerator": 80,
+            "denominator": 112
+          }
+        },
+        "unknown": {
+          "tp": 16,
+          "fp": 50,
+          "fn": 2,
+          "precision": {
+            "value": 0.24242424242424243,
+            "numerator": 16,
+            "denominator": 66
+          },
+          "recall": {
+            "value": 0.8888888888888888,
+            "numerator": 16,
+            "denominator": 18
+          },
+          "f1": {
+            "value": 0.38095238095238093,
+            "numerator": 32,
+            "denominator": 84
+          }
+        }
+      }
+    },
+    "confusion_matrix": {
+      "gold_labels": [
+        "present",
+        "absent",
+        "unknown"
+      ],
+      "pred_labels": [
+        "present",
+        "absent",
+        "unknown",
+        "invalid"
+      ],
+      "counts": {
+        "present": {
+          "present": 390,
+          "absent": 0,
+          "unknown": 22,
+          "invalid": 0
+        },
+        "absent": {
+          "present": 2,
+          "absent": 40,
+          "unknown": 28,
+          "invalid": 0
+        },
+        "unknown": {
+          "present": 0,
+          "absent": 2,
+          "unknown": 16,
+          "invalid": 0
+        }
+      },
+      "matrix": [
+        [
+          390,
+          0,
+          22,
+          0
+        ],
+        [
+          2,
+          40,
+          28,
+          0
+        ],
+        [
+          0,
+          2,
+          16,
+          0
+        ]
+      ]
+    },
+    "missing_set": {
+      "precision": {
+        "value": 0.9,
+        "numerator": 18,
+        "denominator": 20,
+        "n_samples": 100
+      },
+      "recall": {
+        "value": 0.5,
+        "numerator": 18,
+        "denominator": 36,
+        "n_samples": 100
+      },
+      "f1": {
+        "value": 0.6428571428571429,
+        "numerator": 36,
+        "denominator": 56,
+        "n_samples": 100
+      },
+      "tp": 18,
+      "fp": 2,
+      "fn": 18,
+      "per_category": {
+        "screwdriver": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 2,
+          "precision": {
+            "value": 1.0,
+            "numerator": 3,
+            "denominator": 3
+          },
+          "recall": {
+            "value": 0.6,
+            "numerator": 3,
+            "denominator": 5
+          },
+          "f1": {
+            "value": 0.75,
+            "numerator": 6,
+            "denominator": 8
+          }
+        },
+        "pliers": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 7,
+          "precision": {
+            "value": null,
+            "numerator": 0,
+            "denominator": 0
+          },
+          "recall": {
+            "value": 0.0,
+            "numerator": 0,
+            "denominator": 7
+          },
+          "f1": {
+            "value": 0.0,
+            "numerator": 0,
+            "denominator": 7
+          }
+        },
+        "cable_bundle": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 2,
+          "precision": {
+            "value": 1.0,
+            "numerator": 7,
+            "denominator": 7
+          },
+          "recall": {
+            "value": 0.7777777777777778,
+            "numerator": 7,
+            "denominator": 9
+          },
+          "f1": {
+            "value": 0.875,
+            "numerator": 14,
+            "denominator": 16
+          }
+        },
+        "multimeter": {
+          "tp": 7,
+          "fp": 2,
+          "fn": 0,
+          "precision": {
+            "value": 0.7777777777777778,
+            "numerator": 7,
+            "denominator": 9
+          },
+          "recall": {
+            "value": 1.0,
+            "numerator": 7,
+            "denominator": 7
+          },
+          "f1": {
+            "value": 0.875,
+            "numerator": 14,
+            "denominator": 16
+          }
+        },
+        "hammer": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 7,
+          "precision": {
+            "value": 1.0,
+            "numerator": 1,
+            "denominator": 1
+          },
+          "recall": {
+            "value": 0.125,
+            "numerator": 1,
+            "denominator": 8
+          },
+          "f1": {
+            "value": 0.2222222222222222,
+            "numerator": 2,
+            "denominator": 9
+          }
+        }
+      }
+    },
+    "set_exact_match": {
+      "value": 0.74,
+      "numerator": 74,
+      "denominator": 100,
+      "n_samples": 100
+    },
+    "decision_accuracy": {
+      "value": 0.77,
+      "numerator": 77,
+      "denominator": 100,
+      "n_samples": 100
+    },
+    "decision_confusion_matrix": {
+      "gold_labels": [
+        "complete",
+        "incomplete",
+        "unknown"
+      ],
+      "pred_labels": [
+        "complete",
+        "incomplete",
+        "unknown",
+        "invalid"
+      ],
+      "counts": {
+        "complete": {
+          "complete": 55,
+          "incomplete": 0,
+          "unknown": 7,
+          "invalid": 0
+        },
+        "incomplete": {
+          "complete": 2,
+          "incomplete": 17,
+          "unknown": 12,
+          "invalid": 0
+        },
+        "unknown": {
+          "complete": 0,
+          "incomplete": 2,
+          "unknown": 5,
+          "invalid": 0
+        }
+      },
+      "matrix": [
+        [
+          55,
+          0,
+          7,
+          0
+        ],
+        [
+          2,
+          17,
+          12,
+          0
+        ],
+        [
+          0,
+          2,
+          5,
+          0
+        ]
+      ]
+    },
+    "false_complete_rate": {
+      "value": 0.06451612903225806,
+      "numerator": 2,
+      "denominator": 31,
+      "n_samples": 100
+    },
+    "unknown_sample_false_complete_rate": {
+      "value": 0.0,
+      "numerator": 0,
+      "denominator": 7,
+      "n_samples": 100
+    },
+    "unknown_recall": {
+      "value": 0.8888888888888888,
+      "numerator": 16,
+      "denominator": 18,
+      "n_samples": 100
+    },
+    "explicit_coverage": {
+      "value": 0.8962655601659751,
+      "numerator": 432,
+      "denominator": 482,
+      "n_samples": 100
+    },
+    "explicit_subset_accuracy": {
+      "value": 0.9953703703703703,
+      "numerator": 430,
+      "denominator": 432,
+      "n_samples": 100
+    },
+    "json_valid_rate": {
+      "value": 1.0,
+      "numerator": 100,
+      "denominator": 100,
+      "n_samples": 100
+    },
+    "retry_rate": {
+      "value": 0.0,
+      "numerator": 0,
+      "denominator": 100,
+      "n_samples": 100
+    },
+    "failure_rate": {
+      "value": 0.0,
+      "numerator": 0,
+      "denominator": 100,
+      "n_samples": 100
+    }
+  },
+  "presence": {
+    "n_samples": 0,
+    "accuracy": {
+      "value": null,
+      "numerator": 0,
+      "denominator": 0,
+      "n_samples": 0
+    },
+    "item_mismatch": 0,
+    "confusion_matrix": {
+      "gold_labels": [
+        "present",
+        "absent",
+        "unknown"
+      ],
+      "pred_labels": [
+        "present",
+        "absent",
+        "unknown",
+        "invalid"
+      ],
+      "counts": {
+        "present": {
+          "present": 0,
+          "absent": 0,
+          "unknown": 0,
+          "invalid": 0
+        },
+        "absent": {
+          "present": 0,
+          "absent": 0,
+          "unknown": 0,
+          "invalid": 0
+        },
+        "unknown": {
+          "present": 0,
+          "absent": 0,
+          "unknown": 0,
+          "invalid": 0
+        }
+      },
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "per_category": {
+      "screwdriver": {
+        "accuracy": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0
+        },
+        "confusion_matrix": {
+          "gold_labels": [
+            "present",
+            "absent",
+            "unknown"
+          ],
+          "pred_labels": [
+            "present",
+            "absent",
+            "unknown",
+            "invalid"
+          ],
+          "counts": {
+            "present": {
+              "present": 0,
+              "absent": 0,
+              "unknown": 0,
+              "invalid": 0
+            },
+            "absent": {
+              "present": 0,
+              "absent": 0,
+              "unknown": 0,
+              "invalid": 0
+            },
+            "unknown": {
+              "present": 0,
+              "absent": 0,
+              "unknown": 0,
+              "invalid": 0
+            }
+          },
+          "matrix": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        }
+      },
+      "pliers": {
+        "accuracy": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0
+        },
+        "confusion_matrix": {
+          "gold_labels": [
+            "present",
+            "absent",
+            "unknown"
+          ],
+          "pred_labels": [
+            "present",
+            "absent",
+            "unknown",
+            "invalid"
+          ],
+          "counts": {
+            "present": {
+              "present": 0,
+              "absent": 0,
+              "unknown": 0,
+              "invalid": 0
+            },
+            "absent": {
+              "present": 0,
+              "absent": 0,
+              "unknown": 0,
+              "invalid": 0
+            },
+            "unknown": {
+              "present": 0,
+              "absent": 0,
+              "unknown": 0,
+              "invalid": 0
+            }
+          },
+          "matrix": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        }
+      },
+      "cable_bundle": {
+        "accuracy": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0
+        },
+        "confusion_matrix": {
+          "gold_labels": [
+            "present",
+            "absent",
+            "unknown"
+          ],
+          "pred_labels": [
+            "present",
+            "absent",
+            "unknown",
+            "invalid"
+          ],
+          "counts": {
+            "present": {
+              "present": 0,
+              "absent": 0,
+              "unknown": 0,
+              "invalid": 0
+            },
+            "absent": {
+              "present": 0,
+              "absent": 0,
+              "unknown": 0,
+              "invalid": 0
+            },
+            "unknown": {
+              "present": 0,
+              "absent": 0,
+              "unknown": 0,
+              "invalid": 0
+            }
+          },
+          "matrix": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        }
+      },
+      "multimeter": {
+        "accuracy": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0
+        },
+        "confusion_matrix": {
+          "gold_labels": [
+            "present",
+            "absent",
+            "unknown"
+          ],
+          "pred_labels": [
+            "present",
+            "absent",
+            "unknown",
+            "invalid"
+          ],
+          "counts": {
+            "present": {
+              "present": 0,
+              "absent": 0,
+              "unknown": 0,
+              "invalid": 0
+            },
+            "absent": {
+              "present": 0,
+              "absent": 0,
+              "unknown": 0,
+              "invalid": 0
+            },
+            "unknown": {
+              "present": 0,
+              "absent": 0,
+              "unknown": 0,
+              "invalid": 0
+            }
+          },
+          "matrix": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        }
+      },
+      "hammer": {
+        "accuracy": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0
+        },
+        "confusion_matrix": {
+          "gold_labels": [
+            "present",
+            "absent",
+            "unknown"
+          ],
+          "pred_labels": [
+            "present",
+            "absent",
+            "unknown",
+            "invalid"
+          ],
+          "counts": {
+            "present": {
+              "present": 0,
+              "absent": 0,
+              "unknown": 0,
+              "invalid": 0
+            },
+            "absent": {
+              "present": 0,
+              "absent": 0,
+              "unknown": 0,
+              "invalid": 0
+            },
+            "unknown": {
+              "present": 0,
+              "absent": 0,
+              "unknown": 0,
+              "invalid": 0
+            }
+          },
+          "matrix": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        }
+      }
+    },
+    "json_valid_rate": {
+      "value": null,
+      "numerator": 0,
+      "denominator": 0,
+      "n_samples": 0
+    },
+    "retry_rate": {
+      "value": null,
+      "numerator": 0,
+      "denominator": 0,
+      "n_samples": 0
+    },
+    "failure_rate": {
+      "value": null,
+      "numerator": 0,
+      "denominator": 0,
+      "n_samples": 0
+    }
+  },
+  "pair_consistency": {
+    "rate": {
+      "value": null,
+      "numerator": 0,
+      "denominator": 0,
+      "n_samples": 0
+    },
+    "n_pairs": 0,
+    "n_skipped_groups": 8,
+    "skipped_groups": [
+      {
+        "pair_group_id": "s001_l008_p01",
+        "reason": "not_exactly_two_checklist_samples",
+        "n": 4
+      },
+      {
+        "pair_group_id": "s001_l008_p02",
+        "reason": "not_exactly_two_checklist_samples",
+        "n": 4
+      },
+      {
+        "pair_group_id": "s001_l008_p03",
+        "reason": "not_exactly_two_checklist_samples",
+        "n": 4
+      },
+      {
+        "pair_group_id": "s001_l008_p04",
+        "reason": "not_exactly_two_checklist_samples",
+        "n": 4
+      },
+      {
+        "pair_group_id": "s001_l008_p05",
+        "reason": "not_exactly_two_checklist_samples",
+        "n": 4
+      },
+      {
+        "pair_group_id": "s001_l009_p01",
+        "reason": "not_exactly_two_checklist_samples",
+        "n": 4
+      },
+      {
+        "pair_group_id": "s001_l009_p02",
+        "reason": "not_exactly_two_checklist_samples",
+        "n": 4
+      },
+      {
+        "pair_group_id": "s001_l009_p03",
+        "reason": "not_exactly_two_checklist_samples",
+        "n": 4
+      }
+    ],
+    "pairs": []
+  },
+  "by_condition": {
+    "hand_no_occlusion": {
+      "n_records": 6,
+      "n_scene_groups": 1,
+      "insufficient_samples": true,
+      "checklist": {
+        "n_samples": 6,
+        "state_accuracy": {
+          "overall": {
+            "value": 1.0,
+            "numerator": 30,
+            "denominator": 30,
+            "n_samples": 6
+          },
+          "per_category": {
+            "screwdriver": {
+              "value": 1.0,
+              "numerator": 6,
+              "denominator": 6,
+              "n_samples": 6
+            },
+            "pliers": {
+              "value": 1.0,
+              "numerator": 6,
+              "denominator": 6,
+              "n_samples": 6
+            },
+            "cable_bundle": {
+              "value": 1.0,
+              "numerator": 6,
+              "denominator": 6,
+              "n_samples": 6
+            },
+            "multimeter": {
+              "value": 1.0,
+              "numerator": 6,
+              "denominator": 6,
+              "n_samples": 6
+            },
+            "hammer": {
+              "value": 1.0,
+              "numerator": 6,
+              "denominator": 6,
+              "n_samples": 6
+            }
+          }
+        },
+        "macro_f1": {
+          "value": 1.0,
+          "numerator": 1,
+          "denominator": 3,
+          "n_classes": 3,
+          "n_classes_defined": 1,
+          "aggregation": "arithmetic_mean_of_defined_class_f1",
+          "per_class": {
+            "present": {
+              "tp": 30,
+              "fp": 0,
+              "fn": 0,
+              "precision": {
+                "value": 1.0,
+                "numerator": 30,
+                "denominator": 30
+              },
+              "recall": {
+                "value": 1.0,
+                "numerator": 30,
+                "denominator": 30
+              },
+              "f1": {
+                "value": 1.0,
+                "numerator": 60,
+                "denominator": 60
+              }
+            },
+            "absent": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": {
+                "value": null,
+                "numerator": 0,
+                "denominator": 0
+              },
+              "recall": {
+                "value": null,
+                "numerator": 0,
+                "denominator": 0
+              },
+              "f1": {
+                "value": null,
+                "numerator": 0,
+                "denominator": 0
+              }
+            },
+            "unknown": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": {
+                "value": null,
+                "numerator": 0,
+                "denominator": 0
+              },
+              "recall": {
+                "value": null,
+                "numerator": 0,
+                "denominator": 0
+              },
+              "f1": {
+                "value": null,
+                "numerator": 0,
+                "denominator": 0
+              }
+            }
+          }
+        },
+        "confusion_matrix": {
+          "gold_labels": [
+            "present",
+            "absent",
+            "unknown"
+          ],
+          "pred_labels": [
+            "present",
+            "absent",
+            "unknown",
+            "invalid"
+          ],
+          "counts": {
+            "present": {
+              "present": 30,
+              "absent": 0,
+              "unknown": 0,
+              "invalid": 0
+            },
+            "absent": {
+              "present": 0,
+              "absent": 0,
+              "unknown": 0,
+              "invalid": 0
+            },
+            "unknown": {
+              "present": 0,
+              "absent": 0,
+              "unknown": 0,
+              "invalid": 0
+            }
+          },
+          "matrix": [
+            [
+              30,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "missing_set": {
+          "precision": {
+            "value": null,
+            "numerator": 0,
+            "denominator": 0,
+            "n_samples": 6
+          },
+          "recall": {
+            "value": null,
+            "numerator": 0,
+            "denominator": 0,
+            "n_samples": 6
+          },
+          "f1": {
+            "value": null,
+            "numerator": 0,
+            "denominator": 0,
+            "n_samples": 6
+          },
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "per_category": {
+            "screwdriver": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": {
+                "value": null,
+                "numerator": 0,
+                "denominator": 0
+              },
+              "recall": {
+                "value": null,
+                "numerator": 0,
+                "denominator": 0
+              },
+              "f1": {
+                "value": null,
+                "numerator": 0,
+                "denominator": 0
+              }
+            },
+            "pliers": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": {
+                "value": null,
+                "numerator": 0,
+                "denominator": 0
+              },
+              "recall": {
+                "value": null,
+                "numerator": 0,
+                "denominator": 0
+              },
+              "f1": {
+                "value": null,
+                "numerator": 0,
+                "denominator": 0
+              }
+            },
+            "cable_bundle": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": {
+                "value": null,
+                "numerator": 0,
+                "denominator": 0
+              },
+              "recall": {
+                "value": null,
+                "numerator": 0,
+                "denominator": 0
+              },
+              "f1": {
+                "value": null,
+                "numerator": 0,
+                "denominator": 0
+              }
+            },
+            "multimeter": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": {
+                "value": null,
+                "numerator": 0,
+                "denominator": 0
+              },
+              "recall": {
+                "value": null,
+                "numerator": 0,
+                "denominator": 0
+              },
+              "f1": {
+                "value": null,
+                "numerator": 0,
+                "denominator": 0
+              }
+            },
+            "hammer": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": {
+                "value": null,
+                "numerator": 0,
+                "denominator": 0
+              },
+              "recall": {
+                "value": null,
+                "numerator": 0,
+                "denominator": 0
+              },
+              "f1": {
+                "value": null,
+                "numerator": 0,
+                "denominator": 0
+              }
+            }
+          }
+        },
+        "set_exact_match": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "n_samples": 6
+        },
+        "decision_accuracy": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "n_samples": 6
+        },
+        "decision_confusion_matrix": {
+          "gold_labels": [
+            "complete",
+            "incomplete",
+            "unknown"
+          ],
+          "pred_labels": [
+            "complete",
+            "incomplete",
+            "unknown",
+            "invalid"
+          ],
+          "counts": {
+            "complete": {
+              "complete": 6,
+              "incomplete": 0,
+              "unknown": 0,
+              "invalid": 0
+            },
+            "incomplete": {
+              "complete": 0,
+              "incomplete": 0,
+              "unknown": 0,
+              "invalid": 0
+            },
+            "unknown": {
+              "complete": 0,
+              "incomplete": 0,
+              "unknown": 0,
+              "invalid": 0
+            }
+          },
+          "matrix": [
+            [
+              6,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "false_complete_rate": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "n_samples": 6
+        },
+        "unknown_sample_false_complete_rate": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "n_samples": 6
+        },
+        "unknown_recall": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "n_samples": 6
+        },
+        "explicit_coverage": {
+          "value": 1.0,
+          "numerator": 30,
+          "denominator": 30,
+          "n_samples": 6
+        },
+        "explicit_subset_accuracy": {
+          "value": 1.0,
+          "numerator": 30,
+          "denominator": 30,
+          "n_samples": 6
+        },
+        "json_valid_rate": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "n_samples": 6
+        },
+        "retry_rate": {
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 6,
+          "n_samples": 6
+        },
+        "failure_rate": {
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 6,
+          "n_samples": 6
+        }
+      },
+      "presence": {
+        "n_samples": 0,
+        "accuracy": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "n_samples": 0
+        },
+        "item_mismatch": 0,
+        "confusion_matrix": {
+          "gold_labels": [
+            "present",
+            "absent",
+            "unknown"
+          ],
+          "pred_labels": [
+            "present",
+            "absent",
+            "unknown",
+            "invalid"
+          ],
+          "counts": {
+            "present": {
+              "present": 0,
+              "absent": 0,
+              "unknown": 0,
+              "invalid": 0
+            },
+            "absent": {
+              "present": 0,
+              "absent": 0,
+              "unknown": 0,
+              "invalid": 0
+            },
+            "unknown": {
+              "present": 0,
+              "absent": 0,
+              "unknown": 0,
+              "invalid": 0
+            }
+          },
+          "matrix": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "per_category": {
+          "screwdriver": {
+            "accuracy": {
+              "value": null,
+              "numerator": 0,
+              "denominator": 0
+            },
+            "confusion_matrix": {
+              "gold_labels": [
+                "present",
+                "absent",
+                "unknown"
+              ],
+              "pred_labels": [
+                "present",
+                "absent",
+                "unknown",
+                "invalid"
+              ],
+              "counts": {
+                "present": {
+                  "present": 0,
+                  "absent": 0,
+                  "unknown": 0,
+                  "invalid": 0
+                },
+                "absent": {
+                  "present": 0,
+                  "absent": 0,
+                  "unknown": 0,
+                  "invalid": 0
+                },
+                "unknown": {
+                  "present": 0,
+                  "absent": 0,
+                  "unknown": 0,
+                  "invalid": 0
+                }
+              },
+              "matrix": [
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              ]
+            }
+          },
+          "pliers": {
+            "accuracy": {
+              "value": null,
+              "numerator": 0,
+              "denominator": 0
+            },
+            "confusion_matrix": {
+              "gold_labels": [
+                "present",
+                "absent",
+                "unknown"
+              ],
+              "pred_labels": [
+                "present",
+                "absent",
+                "unknown",
+                "invalid"
+              ],
+              "counts": {
+                "present": {
+                  "present": 0,
+                  "absent": 0,
+                  "unknown": 0,
+                  "invalid": 0
+                },
+                "absent": {
+                  "present": 0,
+                  "absent": 0,
+                  "unknown": 0,
+                  "invalid": 0
+                },
+                "unknown": {
+                  "present": 0,
+                  "absent": 0,
+                  "unknown": 0,
+                  "invalid": 0
+                }
+              },
+              "matrix": [
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              ]
+            }
+          },
+          "cable_bundle": {
+            "accuracy": {
+              "value": null,
+              "numerator": 0,
+              "denominator": 0
+            },
+            "confusion_matrix": {
+              "gold_labels": [
+                "present",
+                "absent",
+                "unknown"
+              ],
+              "pred_labels": [
+                "present",
+                "absent",
+                "unknown",
+                "invalid"
+              ],
+              "counts": {
+                "present": {
+                  "present": 0,
+                  "absent": 0,
+                  "unknown": 0,
+                  "invalid": 0
+                },
+                "absent": {
+                  "present": 0,
+                  "absent": 0,
+                  "unknown": 0,
+                  "invalid": 0
+                },
+                "unknown": {
+                  "present": 0,
+                  "absent": 0,
+                  "unknown": 0,
+                  "invalid": 0
+                }
+              },
+              "matrix": [
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              ]
+            }
+          },
+          "multimeter": {
+            "accuracy": {
+              "value": null,
+              "numerator": 0,
+              "denominator": 0
+            },
+            "confusion_matrix": {
+              "gold_labels": [
+                "present",
+                "absent",
+                "unknown"
+              ],
+              "pred_labels": [
+                "present",
+                "absent",
+                "unknown",
+                "invalid"
+              ],
+              "counts": {
+                "present": {
+                  "present": 0,
+                  "absent": 0,
+                  "unknown": 0,
+                  "invalid": 0
+                },
+                "absent": {
+                  "present": 0,
+                  "absent": 0,
+                  "unknown": 0,
+                  "invalid": 0
+                },
+                "unknown": {
+                  "present": 0,
+                  "absent": 0,
+                  "unknown": 0,
+                  "invalid": 0
+                }
+              },
+              "matrix": [
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              ]
+            }
+          },
+          "hammer": {
+            "accuracy": {
+              "value": null,
+              "numerator": 0,
+              "denominator": 0
+            },
+            "confusion_matrix": {
+              "gold_labels": [
+                "present",
+                "absent",
+                "unknown"
+              ],
+              "pred_labels": [
+                "present",
+                "absent",
+                "unknown",
+                "invalid"
+              ],
+              "counts": {
+                "present": {
+                  "present": 0,
+                  "absent": 0,
+                  "unknown": 0,
+                  "invalid": 0
+                },
+                "absent": {
+                  "present": 0,
+                  "absent": 0,
+                  "unknown": 0,
+                  "invalid": 0
+                },
+                "unknown": {
+                  "present": 0,
+                  "absent": 0,
+                  "unknown": 0,
+                  "invalid": 0
+                }
+              },
+              "matrix": [
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              ]
+            }
+          }
+        },
+        "json_valid_rate": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "n_samples": 0
+        },
+        "retry_rate": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "n_samples": 0
+        },
+        "failure_rate": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "n_samples": 0
+        }
+      },
+      "pair_consistency": {
+        "rate": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "n_samples": 0
+        },
+        "n_pairs": 0,
+        "n_skipped_groups": 0,
+        "skipped_groups": [],
+        "pairs": []
+      }
+    },
+    "occlusion": {
+      "n_records": 10,
+      "n_scene_groups": 1,
+      "insufficient_samples": true,
+      "checklist": {
+        "n_samples": 10,
+        "state_accuracy": {
+          "overall": {
+            "value": 0.94,
+            "numerator": 47,
+            "denominator": 50,
+            "n_samples": 10
+          },
+          "per_category": {
+            "screwdriver": {
+              "value": 1.0,
+              "numerator": 10,
+              "denominator": 10,
+              "n_samples": 10
+            },
+            "pliers": {
+              "value": 1.0,
+              "numerator": 10,
+              "denominator": 10,
+              "n_samples": 10
+            },
+            "cable_bundle": {
+              "value": 0.9,
+              "numerator": 9,
+              "denominator": 10,
+              "n_samples": 10
+            },
+            "multimeter": {
+              "value": 0.8,
+              "numerator": 8,
+              "denominator": 10,
+              "n_samples": 10
+            },
+            "hammer": {
+              "value": 1.0,
+              "numerator": 10,
+              "denominator": 10,
+              "n_samples": 10
+            }
+          }
+        },
+        "macro_f1": {
+          "value": 0.6249347939488784,
+          "numerator": 3,
+          "denominator": 3,
+          "n_classes": 3,
+          "n_classes_defined": 3,
+          "aggregation": "arithmetic_mean_of_defined_class_f1",
+          "per_class": {
+            "present": {
+              "tp": 35,
+              "fp": 0,
+              "fn": 1,
+              "precision": {
+                "value": 1.0,
+                "numerator": 35,
+                "denominator": 35
+              },
+              "recall": {
+                "value": 0.9722222222222222,
+                "numerator": 35,
+                "denominator": 36
+              },
+              "f1": {
+                "value": 0.9859154929577465,
+                "numerator": 70,
+                "denominator": 71
+              }
+            },
+            "absent": {
+              "tp": 0,
+              "fp": 2,
+              "fn": 0,
+              "precision": {
+                "value": 0.0,
+                "numerator": 0,
+                "denominator": 2
+              },
+              "recall": {
+                "value": null,
+                "numerator": 0,
+                "denominator": 0
+              },
+              "f1": {
+                "value": 0.0,
+                "numerator": 0,
+                "denominator": 2
+              }
+            },
+            "unknown": {
+              "tp": 12,
+              "fp": 1,
+              "fn": 2,
+              "precision": {
+                "value": 0.9230769230769231,
+                "numerator": 12,
+                "denominator": 13
+              },
+              "recall": {
+                "value": 0.8571428571428571,
+                "numerator": 12,
+                "denominator": 14
+              },
+              "f1": {
+                "value": 0.8888888888888888,
+                "numerator": 24,
+                "denominator": 27
+              }
+            }
+          }
+        },
+        "confusion_matrix": {
+          "gold_labels": [
+            "present",
+            "absent",
+            "unknown"
+          ],
+          "pred_labels": [
+            "present",
+            "absent",
+            "unknown",
+            "invalid"
+          ],
+          "counts": {
+            "present": {
+              "present": 35,
+              "absent": 0,
+              "unknown": 1,
+              "invalid": 0
+            },
+            "absent": {
+              "present": 0,
+              "absent": 0,
+              "unknown": 0,
+              "invalid": 0
+            },
+            "unknown": {
+              "present": 0,
+              "absent": 2,
+              "unknown": 12,
+              "invalid": 0
+            }
+          },
+          "matrix": [
+            [
+              35,
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              2,
+              12,
+              0
+            ]
+          ]
+        },
+        "missing_set": {
+          "precision": {
+            "value": 0.0,
+            "numerator": 0,
+            "denominator": 2,
+            "n_samples": 10
+          },
+          "recall": {
+            "value": null,
+            "numerator": 0,
+            "denominator": 0,
+            "n_samples": 10
+          },
+          "f1": {
+            "value": 0.0,
+            "numerator": 0,
+            "denominator": 2,
+            "n_samples": 10
+          },
+          "tp": 0,
+          "fp": 2,
+          "fn": 0,
+          "per_category": {
+            "screwdriver": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": {
+                "value": null,
+                "numerator": 0,
+                "denominator": 0
+              },
+              "recall": {
+                "value": null,
+                "numerator": 0,
+                "denominator": 0
+              },
+              "f1": {
+                "value": null,
+                "numerator": 0,
+                "denominator": 0
+              }
+            },
+            "pliers": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": {
+                "value": null,
+                "numerator": 0,
+                "denominator": 0
+              },
+              "recall": {
+                "value": null,
+                "numerator": 0,
+                "denominator": 0
+              },
+              "f1": {
+                "value": null,
+                "numerator": 0,
+                "denominator": 0
+              }
+            },
+            "cable_bundle": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": {
+                "value": null,
+                "numerator": 0,
+                "denominator": 0
+              },
+              "recall": {
+                "value": null,
+                "numerator": 0,
+                "denominator": 0
+              },
+              "f1": {
+                "value": null,
+                "numerator": 0,
+                "denominator": 0
+              }
+            },
+            "multimeter": {
+              "tp": 0,
+              "fp": 2,
+              "fn": 0,
+              "precision": {
+                "value": 0.0,
+                "numerator": 0,
+                "denominator": 2
+              },
+              "recall": {
+                "value": null,
+                "numerator": 0,
+                "denominator": 0
+              },
+              "f1": {
+                "value": 0.0,
+                "numerator": 0,
+                "denominator": 2
+              }
+            },
+            "hammer": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": {
+                "value": null,
+                "numerator": 0,
+                "denominator": 0
+              },
+              "recall": {
+                "value": null,
+                "numerator": 0,
+                "denominator": 0
+              },
+              "f1": {
+                "value": null,
+                "numerator": 0,
+                "denominator": 0
+              }
+            }
+          }
+        },
+        "set_exact_match": {
+          "value": 0.8,
+          "numerator": 8,
+          "denominator": 10,
+          "n_samples": 10
+        },
+        "decision_accuracy": {
+          "value": 0.8,
+          "numerator": 8,
+          "denominator": 10,
+          "n_samples": 10
+        },
+        "decision_confusion_matrix": {
+          "gold_labels": [
+            "complete",
+            "incomplete",
+            "unknown"
+          ],
+          "pred_labels": [
+            "complete",
+            "incomplete",
+            "unknown",
+            "invalid"
+          ],
+          "counts": {
+            "complete": {
+              "complete": 4,
+              "incomplete": 0,
+              "unknown": 0,
+              "invalid": 0
+            },
+            "incomplete": {
+              "complete": 0,
+              "incomplete": 0,
+              "unknown": 0,
+              "invalid": 0
+            },
+            "unknown": {
+              "complete": 0,
+              "incomplete": 2,
+              "unknown": 4,
+              "invalid": 0
+            }
+          },
+          "matrix": [
+            [
+              4,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              2,
+              4,
+              0
+            ]
+          ]
+        },
+        "false_complete_rate": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "n_samples": 10
+        },
+        "unknown_sample_false_complete_rate": {
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 6,
+          "n_samples": 10
+        },
+        "unknown_recall": {
+          "value": 0.8571428571428571,
+          "numerator": 12,
+          "denominator": 14,
+          "n_samples": 10
+        },
+        "explicit_coverage": {
+          "value": 0.9722222222222222,
+          "numerator": 35,
+          "denominator": 36,
+          "n_samples": 10
+        },
+        "explicit_subset_accuracy": {
+          "value": 1.0,
+          "numerator": 35,
+          "denominator": 35,
+          "n_samples": 10
+        },
+        "json_valid_rate": {
+          "value": 1.0,
+          "numerator": 10,
+          "denominator": 10,
+          "n_samples": 10
+        },
+        "retry_rate": {
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 10,
+          "n_samples": 10
+        },
+        "failure_rate": {
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 10,
+          "n_samples": 10
+        }
+      },
+      "presence": {
+        "n_samples": 0,
+        "accuracy": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "n_samples": 0
+        },
+        "item_mismatch": 0,
+        "confusion_matrix": {
+          "gold_labels": [
+            "present",
+            "absent",
+            "unknown"
+          ],
+          "pred_labels": [
+            "present",
+            "absent",
+            "unknown",
+            "invalid"
+          ],
+          "counts": {
+            "present": {
+              "present": 0,
+              "absent": 0,
+              "unknown": 0,
+              "invalid": 0
+            },
+            "absent": {
+              "present": 0,
+              "absent": 0,
+              "unknown": 0,
+              "invalid": 0
+            },
+            "unknown": {
+              "present": 0,
+              "absent": 0,
+              "unknown": 0,
+              "invalid": 0
+            }
+          },
+          "matrix": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "per_category": {
+          "screwdriver": {
+            "accuracy": {
+              "value": null,
+              "numerator": 0,
+              "denominator": 0
+            },
+            "confusion_matrix": {
+              "gold_labels": [
+                "present",
+                "absent",
+                "unknown"
+              ],
+              "pred_labels": [
+                "present",
+                "absent",
+                "unknown",
+                "invalid"
+              ],
+              "counts": {
+                "present": {
+                  "present": 0,
+                  "absent": 0,
+                  "unknown": 0,
+                  "invalid": 0
+                },
+                "absent": {
+                  "present": 0,
+                  "absent": 0,
+                  "unknown": 0,
+                  "invalid": 0
+                },
+                "unknown": {
+                  "present": 0,
+                  "absent": 0,
+                  "unknown": 0,
+                  "invalid": 0
+                }
+              },
+              "matrix": [
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              ]
+            }
+          },
+          "pliers": {
+            "accuracy": {
+              "value": null,
+              "numerator": 0,
+              "denominator": 0
+            },
+            "confusion_matrix": {
+              "gold_labels": [
+                "present",
+                "absent",
+                "unknown"
+              ],
+              "pred_labels": [
+                "present",
+                "absent",
+                "unknown",
+                "invalid"
+              ],
+              "counts": {
+                "present": {
+                  "present": 0,
+                  "absent": 0,
+                  "unknown": 0,
+                  "invalid": 0
+                },
+                "absent": {
+                  "present": 0,
+                  "absent": 0,
+                  "unknown": 0,
+                  "invalid": 0
+                },
+                "unknown": {
+                  "present": 0,
+                  "absent": 0,
+                  "unknown": 0,
+                  "invalid": 0
+                }
+              },
+              "matrix": [
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              ]
+            }
+          },
+          "cable_bundle": {
+            "accuracy": {
+              "value": null,
+              "numerator": 0,
+              "denominator": 0
+            },
+            "confusion_matrix": {
+              "gold_labels": [
+                "present",
+                "absent",
+                "unknown"
+              ],
+              "pred_labels": [
+                "present",
+                "absent",
+                "unknown",
+                "invalid"
+              ],
+              "counts": {
+                "present": {
+                  "present": 0,
+                  "absent": 0,
+                  "unknown": 0,
+                  "invalid": 0
+                },
+                "absent": {
+                  "present": 0,
+                  "absent": 0,
+                  "unknown": 0,
+                  "invalid": 0
+                },
+                "unknown": {
+                  "present": 0,
+                  "absent": 0,
+                  "unknown": 0,
+                  "invalid": 0
+                }
+              },
+              "matrix": [
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              ]
+            }
+          },
+          "multimeter": {
+            "accuracy": {
+              "value": null,
+              "numerator": 0,
+              "denominator": 0
+            },
+            "confusion_matrix": {
+              "gold_labels": [
+                "present",
+                "absent",
+                "unknown"
+              ],
+              "pred_labels": [
+                "present",
+                "absent",
+                "unknown",
+                "invalid"
+              ],
+              "counts": {
+                "present": {
+                  "present": 0,
+                  "absent": 0,
+                  "unknown": 0,
+                  "invalid": 0
+                },
+                "absent": {
+                  "present": 0,
+                  "absent": 0,
+                  "unknown": 0,
+                  "invalid": 0
+                },
+                "unknown": {
+                  "present": 0,
+                  "absent": 0,
+                  "unknown": 0,
+                  "invalid": 0
+                }
+              },
+              "matrix": [
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              ]
+            }
+          },
+          "hammer": {
+            "accuracy": {
+              "value": null,
+              "numerator": 0,
+              "denominator": 0
+            },
+            "confusion_matrix": {
+              "gold_labels": [
+                "present",
+                "absent",
+                "unknown"
+              ],
+              "pred_labels": [
+                "present",
+                "absent",
+                "unknown",
+                "invalid"
+              ],
+              "counts": {
+                "present": {
+                  "present": 0,
+                  "absent": 0,
+                  "unknown": 0,
+                  "invalid": 0
+                },
+                "absent": {
+                  "present": 0,
+                  "absent": 0,
+                  "unknown": 0,
+                  "invalid": 0
+                },
+                "unknown": {
+                  "present": 0,
+                  "absent": 0,
+                  "unknown": 0,
+                  "invalid": 0
+                }
+              },
+              "matrix": [
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              ]
+            }
+          }
+        },
+        "json_valid_rate": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "n_samples": 0
+        },
+        "retry_rate": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "n_samples": 0
+        },
+        "failure_rate": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "n_samples": 0
+        }
+      },
+      "pair_consistency": {
+        "rate": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "n_samples": 0
+        },
+        "n_pairs": 0,
+        "n_skipped_groups": 0,
+        "skipped_groups": [],
+        "pairs": []
+      }
+    }
+  },
+  "bootstrap": {
+    "n_iterations": 1000,
+    "seed": 0,
+    "confidence": 0.95,
+    "n_groups": 9,
+    "insufficient_samples": true,
+    "min_groups": 10,
+    "metrics": {
+      "checklist.state_accuracy": {
+        "point_estimate": 0.892,
+        "ci_low": 0.8775763762855415,
+        "ci_high": 0.96,
+        "confidence": 0.95,
+        "n_iterations": 1000,
+        "n_groups": 9,
+        "group_ids": [
+          "s001_l001",
+          "s001_l002",
+          "s001_l003",
+          "s001_l004",
+          "s001_l005",
+          "s001_l006",
+          "s001_l007",
+          "s001_l008",
+          "s001_l009"
+        ],
+        "n_valid_replicates": 1000,
+        "n_undefined_replicates": 0,
+        "insufficient_samples": true,
+        "min_groups": 10,
+        "seed": 0,
+        "method": "cluster_percentile",
+        "group_key": "scene_group_id",
+        "percentile_method": "numpy.linear",
+        "note": "样本不足"
+      },
+      "checklist.macro_f1": {
+        "point_estimate": 0.6884624496564795,
+        "ci_low": 0.48273628729676615,
+        "ci_high": 0.7298639172048489,
+        "confidence": 0.95,
+        "n_iterations": 1000,
+        "n_groups": 9,
+        "group_ids": [
+          "s001_l001",
+          "s001_l002",
+          "s001_l003",
+          "s001_l004",
+          "s001_l005",
+          "s001_l006",
+          "s001_l007",
+          "s001_l008",
+          "s001_l009"
+        ],
+        "n_valid_replicates": 1000,
+        "n_undefined_replicates": 0,
+        "insufficient_samples": true,
+        "min_groups": 10,
+        "seed": 0,
+        "method": "cluster_percentile",
+        "group_key": "scene_group_id",
+        "percentile_method": "numpy.linear",
+        "note": "样本不足"
+      },
+      "checklist.decision_accuracy": {
+        "point_estimate": 0.77,
+        "ci_low": 0.7199878048780488,
+        "ci_high": 0.8500337837837837,
+        "confidence": 0.95,
+        "n_iterations": 1000,
+        "n_groups": 9,
+        "group_ids": [
+          "s001_l001",
+          "s001_l002",
+          "s001_l003",
+          "s001_l004",
+          "s001_l005",
+          "s001_l006",
+          "s001_l007",
+          "s001_l008",
+          "s001_l009"
+        ],
+        "n_valid_replicates": 1000,
+        "n_undefined_replicates": 0,
+        "insufficient_samples": true,
+        "min_groups": 10,
+        "seed": 0,
+        "method": "cluster_percentile",
+        "group_key": "scene_group_id",
+        "percentile_method": "numpy.linear",
+        "note": "样本不足"
+      },
+      "checklist.false_complete_rate": {
+        "point_estimate": 0.06451612903225806,
+        "ci_low": 0.0,
+        "ci_high": 0.11764705882352941,
+        "confidence": 0.95,
+        "n_iterations": 1000,
+        "n_groups": 9,
+        "group_ids": [
+          "s001_l001",
+          "s001_l002",
+          "s001_l003",
+          "s001_l004",
+          "s001_l005",
+          "s001_l006",
+          "s001_l007",
+          "s001_l008",
+          "s001_l009"
+        ],
+        "n_valid_replicates": 909,
+        "n_undefined_replicates": 91,
+        "insufficient_samples": true,
+        "min_groups": 10,
+        "seed": 0,
+        "method": "cluster_percentile",
+        "group_key": "scene_group_id",
+        "percentile_method": "numpy.linear",
+        "note": "样本不足"
+      },
+      "checklist.unknown_sample_false_complete_rate": {
+        "point_estimate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "confidence": 0.95,
+        "n_iterations": 1000,
+        "n_groups": 9,
+        "group_ids": [
+          "s001_l001",
+          "s001_l002",
+          "s001_l003",
+          "s001_l004",
+          "s001_l005",
+          "s001_l006",
+          "s001_l007",
+          "s001_l008",
+          "s001_l009"
+        ],
+        "n_valid_replicates": 657,
+        "n_undefined_replicates": 343,
+        "insufficient_samples": true,
+        "min_groups": 10,
+        "seed": 0,
+        "method": "cluster_percentile",
+        "group_key": "scene_group_id",
+        "percentile_method": "numpy.linear",
+        "note": "样本不足"
+      },
+      "checklist.unknown_recall": {
+        "point_estimate": 0.8888888888888888,
+        "ci_low": 0.8888888888888888,
+        "ci_high": 0.8888888888888888,
+        "confidence": 0.95,
+        "n_iterations": 1000,
+        "n_groups": 9,
+        "group_ids": [
+          "s001_l001",
+          "s001_l002",
+          "s001_l003",
+          "s001_l004",
+          "s001_l005",
+          "s001_l006",
+          "s001_l007",
+          "s001_l008",
+          "s001_l009"
+        ],
+        "n_valid_replicates": 657,
+        "n_undefined_replicates": 343,
+        "insufficient_samples": true,
+        "min_groups": 10,
+        "seed": 0,
+        "method": "cluster_percentile",
+        "group_key": "scene_group_id",
+        "percentile_method": "numpy.linear",
+        "note": "样本不足"
+      },
+      "checklist.explicit_coverage": {
+        "point_estimate": 0.8962655601659751,
+        "ci_low": 0.885363876893133,
+        "ci_high": 0.96,
+        "confidence": 0.95,
+        "n_iterations": 1000,
+        "n_groups": 9,
+        "group_ids": [
+          "s001_l001",
+          "s001_l002",
+          "s001_l003",
+          "s001_l004",
+          "s001_l005",
+          "s001_l006",
+          "s001_l007",
+          "s001_l008",
+          "s001_l009"
+        ],
+        "n_valid_replicates": 1000,
+        "n_undefined_replicates": 0,
+        "insufficient_samples": true,
+        "min_groups": 10,
+        "seed": 0,
+        "method": "cluster_percentile",
+        "group_key": "scene_group_id",
+        "percentile_method": "numpy.linear",
+        "note": "样本不足"
+      },
+      "checklist.explicit_subset_accuracy": {
+        "point_estimate": 0.9953703703703703,
+        "ci_low": 0.9884169884169884,
+        "ci_high": 1.0,
+        "confidence": 0.95,
+        "n_iterations": 1000,
+        "n_groups": 9,
+        "group_ids": [
+          "s001_l001",
+          "s001_l002",
+          "s001_l003",
+          "s001_l004",
+          "s001_l005",
+          "s001_l006",
+          "s001_l007",
+          "s001_l008",
+          "s001_l009"
+        ],
+        "n_valid_replicates": 1000,
+        "n_undefined_replicates": 0,
+        "insufficient_samples": true,
+        "min_groups": 10,
+        "seed": 0,
+        "method": "cluster_percentile",
+        "group_key": "scene_group_id",
+        "percentile_method": "numpy.linear",
+        "note": "样本不足"
+      },
+      "checklist.set_exact_match": {
+        "point_estimate": 0.74,
+        "ci_low": 0.7,
+        "ci_high": 0.85,
+        "confidence": 0.95,
+        "n_iterations": 1000,
+        "n_groups": 9,
+        "group_ids": [
+          "s001_l001",
+          "s001_l002",
+          "s001_l003",
+          "s001_l004",
+          "s001_l005",
+          "s001_l006",
+          "s001_l007",
+          "s001_l008",
+          "s001_l009"
+        ],
+        "n_valid_replicates": 1000,
+        "n_undefined_replicates": 0,
+        "insufficient_samples": true,
+        "min_groups": 10,
+        "seed": 0,
+        "method": "cluster_percentile",
+        "group_key": "scene_group_id",
+        "percentile_method": "numpy.linear",
+        "note": "样本不足"
+      },
+      "checklist.missing_set_f1": {
+        "point_estimate": 0.6428571428571429,
+        "ci_low": 0.6428571428571429,
+        "ci_high": 0.6428571428571429,
+        "confidence": 0.95,
+        "n_iterations": 1000,
+        "n_groups": 9,
+        "group_ids": [
+          "s001_l001",
+          "s001_l002",
+          "s001_l003",
+          "s001_l004",
+          "s001_l005",
+          "s001_l006",
+          "s001_l007",
+          "s001_l008",
+          "s001_l009"
+        ],
+        "n_valid_replicates": 909,
+        "n_undefined_replicates": 91,
+        "insufficient_samples": true,
+        "min_groups": 10,
+        "seed": 0,
+        "method": "cluster_percentile",
+        "group_key": "scene_group_id",
+        "percentile_method": "numpy.linear",
+        "note": "样本不足"
+      },
+      "checklist.json_valid_rate": {
+        "point_estimate": 1.0,
+        "ci_low": 1.0,
+        "ci_high": 1.0,
+        "confidence": 0.95,
+        "n_iterations": 1000,
+        "n_groups": 9,
+        "group_ids": [
+          "s001_l001",
+          "s001_l002",
+          "s001_l003",
+          "s001_l004",
+          "s001_l005",
+          "s001_l006",
+          "s001_l007",
+          "s001_l008",
+          "s001_l009"
+        ],
+        "n_valid_replicates": 1000,
+        "n_undefined_replicates": 0,
+        "insufficient_samples": true,
+        "min_groups": 10,
+        "seed": 0,
+        "method": "cluster_percentile",
+        "group_key": "scene_group_id",
+        "percentile_method": "numpy.linear",
+        "note": "样本不足"
+      },
+      "checklist.retry_rate": {
+        "point_estimate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "confidence": 0.95,
+        "n_iterations": 1000,
+        "n_groups": 9,
+        "group_ids": [
+          "s001_l001",
+          "s001_l002",
+          "s001_l003",
+          "s001_l004",
+          "s001_l005",
+          "s001_l006",
+          "s001_l007",
+          "s001_l008",
+          "s001_l009"
+        ],
+        "n_valid_replicates": 1000,
+        "n_undefined_replicates": 0,
+        "insufficient_samples": true,
+        "min_groups": 10,
+        "seed": 0,
+        "method": "cluster_percentile",
+        "group_key": "scene_group_id",
+        "percentile_method": "numpy.linear",
+        "note": "样本不足"
+      },
+      "checklist.failure_rate": {
+        "point_estimate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "confidence": 0.95,
+        "n_iterations": 1000,
+        "n_groups": 9,
+        "group_ids": [
+          "s001_l001",
+          "s001_l002",
+          "s001_l003",
+          "s001_l004",
+          "s001_l005",
+          "s001_l006",
+          "s001_l007",
+          "s001_l008",
+          "s001_l009"
+        ],
+        "n_valid_replicates": 1000,
+        "n_undefined_replicates": 0,
+        "insufficient_samples": true,
+        "min_groups": 10,
+        "seed": 0,
+        "method": "cluster_percentile",
+        "group_key": "scene_group_id",
+        "percentile_method": "numpy.linear",
+        "note": "样本不足"
+      },
+      "presence.accuracy": {
+        "point_estimate": null,
+        "ci_low": null,
+        "ci_high": null,
+        "confidence": 0.95,
+        "n_iterations": 1000,
+        "n_groups": 9,
+        "group_ids": [
+          "s001_l001",
+          "s001_l002",
+          "s001_l003",
+          "s001_l004",
+          "s001_l005",
+          "s001_l006",
+          "s001_l007",
+          "s001_l008",
+          "s001_l009"
+        ],
+        "n_valid_replicates": 0,
+        "n_undefined_replicates": 1000,
+        "insufficient_samples": true,
+        "min_groups": 10,
+        "seed": 0,
+        "method": "cluster_percentile",
+        "group_key": "scene_group_id",
+        "percentile_method": "numpy.linear",
+        "note": "样本不足"
+      },
+      "pair_consistency": {
+        "point_estimate": null,
+        "ci_low": null,
+        "ci_high": null,
+        "confidence": 0.95,
+        "n_iterations": 1000,
+        "n_groups": 9,
+        "group_ids": [
+          "s001_l001",
+          "s001_l002",
+          "s001_l003",
+          "s001_l004",
+          "s001_l005",
+          "s001_l006",
+          "s001_l007",
+          "s001_l008",
+          "s001_l009"
+        ],
+        "n_valid_replicates": 0,
+        "n_undefined_replicates": 1000,
+        "insufficient_samples": true,
+        "min_groups": 10,
+        "seed": 0,
+        "method": "cluster_percentile",
+        "group_key": "scene_group_id",
+        "percentile_method": "numpy.linear",
+        "note": "样本不足"
+      }
+    }
+  },
+  "latency": {
+    "warmup_excluded": 0,
+    "n_records_after_warmup": 100,
+    "n_missing_total_s": 0,
+    "total_s": {
+      "n": 100,
+      "mean": 2.9862718970799778,
+      "p50": 3.008946608500082,
+      "p95": 3.3850560272997883
+    },
+    "first_token_s": {
+      "n": 100,
+      "mean": 0.40593517999999995,
+      "p50": 0.3996165,
+      "p95": 0.67674395
+    },
+    "generate_s": {
+      "n": 100,
+      "mean": 1.1137613400000002,
+      "p50": 1.1145304999999999,
+      "p95": 1.1642447999999999
+    },
+    "unit": "s"
+  },
+  "throughput": {
+    "warmup_excluded": 0,
+    "checklist_requests_per_s": {
+      "value": 0.3348656902199077,
+      "numerator": 100,
+      "denominator_s": 298.6271897079978,
+      "unit": "request/s",
+      "n_missing_total_s": 0
+    },
+    "generated_tokens_per_s": {
+      "value": 36.29143744565599,
+      "numerator": 4042,
+      "denominator_s": 111.37613400000004,
+      "numerator_tokens": 4042,
+      "unit": "token/s",
+      "n_records": 100,
+      "n_skipped": 0
+    },
+    "camera_fps": {
+      "value": null,
+      "status": "未测"
+    },
+    "note": "点检请求数/秒和生成 token/s 单位不同，不能合并成 FPS。token/s 的分母是最后一次生成耗时，不是 total_s。"
+  },
+  "resources": {
+    "n": 596,
+    "status": "ok",
+    "ram_used_mb": {
+      "n": 596,
+      "mean": 7319.291946308725,
+      "peak": 7431.0
+    },
+    "ram_total_mb": {
+      "n": 596,
+      "mean": 7620.0,
+      "peak": 7620.0
+    },
+    "swap_used_mb": {
+      "n": 596,
+      "mean": 4731.4010067114095,
+      "peak": 6207.0
+    },
+    "gr3d_freq_pct": {
+      "n": 596,
+      "mean": 48.29697986577181,
+      "peak": 99.0
+    },
+    "emc_freq_pct": {
+      "n": 0,
+      "mean": null,
+      "peak": null
+    },
+    "cpu_util_pct": {
+      "n": 3576,
+      "mean": 15.240492170022371,
+      "peak": 100.0
+    },
+    "temperatures_c": {
+      "cpu": {
+        "n": 596,
+        "mean": 60.88552852349023,
+        "peak": 63.093
+      },
+      "gpu": {
+        "n": 596,
+        "mean": 61.555610738255325,
+        "peak": 64.531
+      },
+      "soc0": {
+        "n": 596,
+        "mean": 60.64160234899359,
+        "peak": 62.125
+      },
+      "soc1": {
+        "n": 596,
+        "mean": 60.461253355704926,
+        "peak": 61.937
+      },
+      "soc2": {
+        "n": 596,
+        "mean": 60.138840604027074,
+        "peak": 61.906
+      },
+      "tj": {
+        "n": 596,
+        "mean": 61.65507550335599,
+        "peak": 64.531
+      }
+    },
+    "power_mw": {
+      "VDD_CPU_GPU_CV": {
+        "instant_mw": {
+          "n": 596,
+          "mean": 4839.412751677853,
+          "peak": 8901.0
+        },
+        "average_mw": {
+          "n": 596,
+          "mean": 4595.528523489933,
+          "peak": 4841.0
+        }
+      },
+      "VDD_IN": {
+        "instant_mw": {
+          "n": 596,
+          "mean": 12060.736577181207,
+          "peak": 18949.0
+        },
+        "average_mw": {
+          "n": 596,
+          "mean": 11656.18288590604,
+          "peak": 12062.0
+        }
+      },
+      "VDD_SOC": {
+        "instant_mw": {
+          "n": 596,
+          "mean": 2890.9261744966443,
+          "peak": 4550.0
+        },
+        "average_mw": {
+          "n": 596,
+          "mean": 2803.796979865772,
+          "peak": 2896.0
+        }
+      }
+    },
+    "n_lines_parsed": 596
+  },
+  "methodology_notes": [
+    "每个比例都返回 value、numerator、denominator；分母为 0 时 value 为 None。n_samples 是参与该指标的样本数，类别级指标的分母可能是样本数乘以类别数。",
+    "parse_status 不是 ok 的样本不从分母中删除。五个类别的预测都记为 invalid，完整性决策记为 invalid，并且不对预测调用 derive。",
+    "解析失败时不把缺失集合当成空集合去和真值比‘完全相同’：集合完全匹配一律为否。微平均 P/R/F1 里，失败预测不产生任何‘预测为缺失’的元素，真值缺失项记为 FN、不记 FP；真值缺失集合也为空时，该样本不贡献 TP/FP/FN。",
+    "JSON 有效率按原文定义为首次即解析成功：parse_status==ok 且 retry_count==0。它不是最终有效率。失败率是最终 parse_status!=ok 的比例。重试率是 retry_count>0 的比例。",
+    "宏 F1 对 present/absent/unknown 三类的 F1 做算术平均。invalid 只进入真实类别的 FN，不进入任何一类的 FP，也不单独成类。某一类的 2TP+FP+FN 为 0 时该类 F1 的 value 为 None，宏平均只对有定义的类别计算；三类都无定义时宏平均 value 为 None。",
+    "明确回答覆盖率的分母是真值为 present 或 absent 的全部（样本, 类别），包括预测成 unknown 或 invalid 的格子。明确回答子集准确率的分母只保留预测也是 present 或 absent 的格子，这是条件子集，不是把失败样本从覆盖率里删掉。",
+    "presence 任务只评 target_item。解析成功但 item 不等于 target_item 时，不采用其 state，混淆矩阵记入 invalid，并另计 item_mismatch。JSON 有效率仍只看 parse_status 与 retry_count。",
+    "成对一致性只使用 checklist 样本。pair_group_id 下不是恰好两条 checklist，或没有任何类别的真值不同，则跳过该组并计入 skipped。被移动的类别是真值不同的类别；若多于一类，必须每一类在两张图上都预测正确才算该图片对一致。分母是这样的图片对数量，不是‘两次回答不同’的数量。",
+    "完整性决策、missing_required、uncertain_required 一律用 common.derive 根据金标准 required_items 重算，忽略预测文件里自带的 derived 字段。",
+    "按 condition_tags 分组时，标签字符串原样使用，一个样本可以同时进入多个标签。分组后再计算指标，因此成对一致性只统计过滤后仍然成对的图片。"
+  ]
+}

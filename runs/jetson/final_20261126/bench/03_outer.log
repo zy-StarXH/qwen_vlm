@@ -1,0 +1,27 @@
+LOG_FILE=/home/jetson/qwen_vlm/release/jetson_bundle_base/logs/03_bench_20261126_193326.txt
+开始时间 2026-11-26T19:33:26+08:00
+nvpmodel:
+jetson_clocks: not_running
+脚本不会修改功耗模式，也不会自己运行 jetson_clocks。
+tegrastats pid=12007
+
+===== quant=q4_k_m pixels=384 =====
+启动 llama-server 像素档=384 image-max-tokens=144 端口=8080
+llama-server 健康检查通过
+写出 /home/jetson/qwen_vlm/release/jetson_bundle_base/logs/bench_20261126_193326/q4_k_m_384.jsonl
+OK /home/jetson/qwen_vlm/release/jetson_bundle_base/logs/bench_20261126_193326/q4_k_m_384.jsonl
+
+===== quant=q4_k_m pixels=512 =====
+启动 llama-server 像素档=512 image-max-tokens=256 端口=8080
+llama-server 健康检查通过
+写出 /home/jetson/qwen_vlm/release/jetson_bundle_base/logs/bench_20261126_193326/q4_k_m_512.jsonl
+OK /home/jetson/qwen_vlm/release/jetson_bundle_base/logs/bench_20261126_193326/q4_k_m_512.jsonl
+
+===== quant=q4_k_m pixels=768 =====
+启动 llama-server 像素档=768 image-max-tokens=576 端口=8080
+llama-server 健康检查通过
+写出 /home/jetson/qwen_vlm/release/jetson_bundle_base/logs/bench_20261126_193326/q4_k_m_768.jsonl
+OK /home/jetson/qwen_vlm/release/jetson_bundle_base/logs/bench_20261126_193326/q4_k_m_768.jsonl
+
+结果目录 /home/jetson/qwen_vlm/release/jetson_bundle_base/logs/bench_20261126_193326
+RESULT: PASS

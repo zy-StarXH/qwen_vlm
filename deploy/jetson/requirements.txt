@@ -6,3 +6,5 @@ pillow>=10
 pyyaml>=6
 jsonschema>=4.18
 requests>=2.31
+# predict_llamacpp.py 的真实照片评测会导入 qwen_vlm.data，leakage 模块依赖 imagehash。
+imagehash>=4.3

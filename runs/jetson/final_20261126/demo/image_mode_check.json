@@ -1,0 +1,45 @@
+{
+  "app": "qwen_vlm.app.app",
+  "backend": "llamacpp",
+  "model": "final-q4_k_m.gguf",
+  "pixels": 512,
+  "server": "http://127.0.0.1:8080",
+  "rows": [
+    {
+      "id": "v001",
+      "image": "/home/jetson/qwen_vlm/data/raw/session_001/session_001_20261118_153745_750016_4e0334.png",
+      "wall_s": 4.587,
+      "state_markdown": "| 类别 | 状态 | 是否在本次清单 |\n| --- | --- | --- |\n| 螺丝刀 | 在（present） | 是 |\n| 钳子 | 在（present） | 是 |\n| 线缆 | 无法确认（unknown） | 是 |\n| 万用表 | 在（present） | 是 |\n| 锤子 | 在（present） | 是 |",
+      "missing": "（清单内没有缺失项）；无法确认：线缆",
+      "answer_raw": "线缆是否齐备暂时无法确认。\n\n原始输出：\n{\"item_states\": {\"screwdriver\": \"present\", \"pliers\": \"present\", \"cable_bundle\": \"unknown\", \"multimeter\": \"present\", \"hammer\": \"present\"}}",
+      "status": "总耗时 3.566 秒；解析 ok；重试 0 次；生成 40 token；prompt 507 token；prefill 1.082 秒；生成 1.105 秒。"
+    },
+    {
+      "id": "v014",
+      "image": "/home/jetson/qwen_vlm/data/raw/session_001/session_001_20261118_154242_630807_8818df.png",
+      "wall_s": 4.307,
+      "state_markdown": "| 类别 | 状态 | 是否在本次清单 |\n| --- | --- | --- |\n| 螺丝刀 | 在（present） | 是 |\n| 钳子 | 在（present） | 是 |\n| 线缆 | 在（present） | 是 |\n| 万用表 | 缺失（absent） | 是 |\n| 锤子 | 在（present） | 是 |",
+      "missing": "万用表",
+      "answer_raw": "缺少万用表。\n\n原始输出：\n{\"item_states\": {\"screwdriver\": \"present\", \"pliers\": \"present\", \"cable_bundle\": \"present\", \"multimeter\": \"absent\", \"hammer\": \"present\"}}",
+      "status": "总耗时 3.271 秒；解析 ok；重试 0 次；生成 41 token；prompt 403 token；prefill 0.698 秒；生成 1.131 秒。"
+    },
+    {
+      "id": "v040",
+      "image": "/home/jetson/qwen_vlm/data/raw/session_001/session_001_20261118_154636_064709_19a4e0.png",
+      "wall_s": 4.127,
+      "state_markdown": "| 类别 | 状态 | 是否在本次清单 |\n| --- | --- | --- |\n| 螺丝刀 | 在（present） | 是 |\n| 钳子 | 在（present） | 是 |\n| 线缆 | 在（present） | 是 |\n| 万用表 | 在（present） | 是 |\n| 锤子 | 在（present） | 是 |",
+      "missing": "（清单内没有缺失项）",
+      "answer_raw": "所需器材齐全：螺丝刀、钳子、线缆、万用表、锤子。\n\n原始输出：\n{\"item_states\": {\"screwdriver\": \"present\", \"pliers\": \"present\", \"cable_bundle\": \"present\", \"multimeter\": \"present\", \"hammer\": \"present\"}}",
+      "status": "总耗时 3.157 秒；解析 ok；重试 0 次；生成 40 token；prompt 403 token；prefill 0.674 秒；生成 1.099 秒。"
+    },
+    {
+      "id": "v041",
+      "image": "/home/jetson/qwen_vlm/data/raw/session_001/session_001_20261118_154712_392184_e3ae70.png",
+      "wall_s": 4.37,
+      "state_markdown": "| 类别 | 状态 | 是否在本次清单 |\n| --- | --- | --- |\n| 螺丝刀 | 无法确认（unknown） | 是 |\n| 钳子 | 在（present） | 是 |\n| 线缆 | 在（present） | 是 |\n| 万用表 | 在（present） | 是 |\n| 锤子 | 在（present） | 是 |",
+      "missing": "（清单内没有缺失项）；无法确认：螺丝刀",
+      "answer_raw": "螺丝刀是否齐备暂时无法确认。\n\n原始输出：\n{\"item_states\": {\"screwdriver\": \"unknown\", \"pliers\": \"present\", \"cable_bundle\": \"present\", \"multimeter\": \"present\", \"hammer\": \"present\"}}",
+      "status": "总耗时 3.433 秒；解析 ok；重试 0 次；生成 40 token；prompt 403 token；prefill 0.676 秒；生成 1.108 秒。"
+    }
+  ]
+}

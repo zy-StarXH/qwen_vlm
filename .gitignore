@@ -28,3 +28,6 @@ runs/robust/.lock
 
 # live_check.py 的运行时截图和自检输出，不进库。
 runs/live_demo/
+
+# 云端上传的模型/照片中转目录，不入库。
+server_download/
