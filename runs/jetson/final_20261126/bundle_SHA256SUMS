@@ -26,7 +26,7 @@ db1c2c1b7089d98ca2d7be5dbd47a71c808f5d8faa61830c192e5c07d6415378  ./deploy/jetso
 4dd21dbc6f2b5bcbc70c7672046db90d29c7658a657a941fa9900f6e60396a64  ./deploy/jetson/01_build_llamacpp.sh
 3bc48aea5be3817962e5deb31550329b997fdd5463de98912166767dcd3f8e4b  ./deploy/jetson/02_run_baseline.sh
 e658a0e12b89f6ad0c8de622778576bdda1d7ad001eb7c82ddc9e6c5fd60cbf9  ./deploy/jetson/03_bench.sh
-45229ed74a843eae6e2f27957210f9a301ba105fc48f91dfecd4580028ecde91  ./deploy/jetson/04_app.sh
+5f0d539ea806c2c2fc32acf288faf290462261cea6c6ae1755b9dbfe6797f109  ./deploy/jetson/04_app.sh
 00f779289ac99e8f0d62dd35c32a90a1afc468e044ecfba21e698862296e7f58  ./deploy/jetson/bench_client.py
 5c1dca788400345ef0d0c4f8d333ccd47c55b04a8b7eb37271ad317baf957cb3  ./deploy/jetson/lib.sh
 b5bf9258a694a220995e9c5576caec298a2680ab8ce9099b71dab6622556aac0  ./deploy/jetson/LLAMACPP_VERSION.md

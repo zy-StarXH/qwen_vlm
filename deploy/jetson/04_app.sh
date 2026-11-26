@@ -55,7 +55,7 @@ for _ in $(seq 1 60); do
   if ! kill -0 "$APP_PID" 2>/dev/null; then
     fail "演示界面进程退出，看 $app_log"
   fi
-  if python3 - "$APP_PORT" <<'PY'
+  if python3 - "$APP_PORT" 2>/dev/null <<'PY'
 import sys, urllib.request
 urllib.request.urlopen(f"http://127.0.0.1:{sys.argv[1]}/", timeout=2).read(32)
 PY
